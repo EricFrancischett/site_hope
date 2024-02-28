@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:site_hope/home_page.dart';
+import 'package:site_hope/features/home/view/home_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -11,6 +11,7 @@ class AppWidget extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Montserrat',
       ),
       home: const HomePage(),
     );
