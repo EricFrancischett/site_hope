@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
-import 'package:site_hope/general/font_weight_helper_enum.dart';
+import 'package:site_hope/general/font_weight_helper.dart';
 
 class AppBarButton extends StatefulWidget {
   final Function()? onTap;
@@ -28,19 +28,15 @@ class _AppBarButtonState extends State<AppBarButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (v) {
-        setState(
-          () {
-            isHovered = true;
-          },
-        );
+      onEnter: (event) {
+        setState(() {
+          isHovered = true;
+        });
       },
-      onExit: (v) {
-        setState(
-          () {
-            isHovered = false;
-          },
-        );
+      onExit: (event) {
+        setState(() {
+          isHovered = false;
+        });
       },
       cursor:
           widget.onTap == null ? MouseCursor.defer : SystemMouseCursors.click,
@@ -57,8 +53,8 @@ class _AppBarButtonState extends State<AppBarButton> {
                     : widget.fontColor,
             fontSize: 14,
             fontWeight: (isHovered || widget.isSelected)
-                ? FontWeightHelperEnum.extraBold.fontWeight
-                : FontWeightHelperEnum.medium.fontWeight,
+                ? FontWeightHelper.extraBold
+                : FontWeightHelper.medium,
             overflow: TextOverflow.ellipsis,
             letterSpacing: 0.5,
           ),

@@ -42,7 +42,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
               const AppBarButton(
                 text: 'Hotéis',
-                isSelected: true,
               ),
               const SizedBox(
                 width: 24,

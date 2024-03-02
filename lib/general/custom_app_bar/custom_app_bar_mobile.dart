@@ -13,104 +13,109 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      childrenPadding: const EdgeInsets.symmetric(
-        horizontal: 30,
-        vertical: 20,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
-      tilePadding: const EdgeInsets.symmetric(
-        horizontal: 30,
-      ),
-      initiallyExpanded: false,
-      onExpansionChanged: (value) {
-        setState(() {
-          isExpanded = value;
-        });
-      },
-      expandedAlignment: Alignment.centerRight,
-      expandedCrossAxisAlignment: CrossAxisAlignment.end,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
+      child: ExpansionTile(
+        childrenPadding: const EdgeInsets.symmetric(
+          horizontal: 30,
+          vertical: 20,
         ),
-        side: BorderSide(
-          color: AppColors.hopeOrange,
-          width: 1,
+        tilePadding: const EdgeInsets.symmetric(
+          horizontal: 30,
         ),
-      ),
-      collapsedShape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
+        initiallyExpanded: false,
+        onExpansionChanged: (value) {
+          setState(() {
+            isExpanded = value;
+          });
+        },
+        expandedAlignment: Alignment.centerRight,
+        expandedCrossAxisAlignment: CrossAxisAlignment.end,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+          side: BorderSide(
+            color: AppColors.hopeOrange,
+            width: 1,
+          ),
         ),
-      ),
-      collapsedBackgroundColor: AppColors.hopeOrange,
-      title: Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          width: 28,
-          height: 33,
+        collapsedShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
+        collapsedBackgroundColor: AppColors.hopeOrange,
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            width: 28,
+            height: 33,
+            color: isExpanded ? AppColors.hopeOrange : AppColors.hopeWhite,
+          ),
+        ),
+        trailing: Icon(
+          Icons.dehaze_rounded,
           color: isExpanded ? AppColors.hopeOrange : AppColors.hopeWhite,
+          size: 29,
         ),
+        children: const [
+          AppBarButton(
+            text: 'Passagens Aéreas',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
+            text: 'Hotéis',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
+            text: 'Pacotes',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
+            text: 'Aluguel de Carro',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
+            text: 'Sobre Nós',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
+            text: 'Blog',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+          ),
+        ],
       ),
-      trailing: Icon(
-        Icons.dehaze_rounded,
-        color: isExpanded ? AppColors.hopeOrange : AppColors.hopeWhite,
-        size: 29,
-      ),
-      children: const [
-        AppBarButton(
-          text: 'Passagens Aéreas',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        AppBarButton(
-          text: 'Hotéis',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        AppBarButton(
-          text: 'Pacotes',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        AppBarButton(
-          text: 'Aluguel de Carro',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-          isSelected: true,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        AppBarButton(
-          text: 'Sobre Nós',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        AppBarButton(
-          text: 'Blog',
-          fontColor: AppColors.hopeDarkGrey,
-          hoverColor: AppColors.hopeOrange,
-          selectedColor: AppColors.hopeOrange,
-        ),
-      ],
     );
   }
 }
