@@ -68,6 +68,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///Users/ericmellofrancischett/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/ericmellofrancischett/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -158,7 +164,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-02T20:40:44.964193Z",
+  "generated": "2024-03-05T00:15:51.280853Z",
   "generator": "pub",
   "generatorVersion": "3.2.1"
 }

@@ -17,6 +17,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
       data: Theme.of(context).copyWith(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
       child: ExpansionTile(
         childrenPadding: const EdgeInsets.symmetric(

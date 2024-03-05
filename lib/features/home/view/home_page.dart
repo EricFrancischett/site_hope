@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar_mobile.dart';
+import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
+import 'package:site_hope/general/widgets/app_footer.dart';
 import 'package:site_hope/general/widgets/destination_widget.dart';
+import 'package:site_hope/general/widgets/faq_widget.dart';
 import 'package:site_hope/general/widgets/feedback_widget.dart';
 import 'package:site_hope/general/widgets/hilghlight_packs_widget.dart';
 import 'package:site_hope/general/widgets/hotels_widget.dart';
@@ -158,6 +161,41 @@ class _HomePageState extends State<HomePage> {
                         resolution: resolution,
                       ),
                     ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                child: FaqWidget(
+                  resolution: resolution,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            AppFooter(
+              resolution: resolution,
+            ),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.all(
+                  resolution == CurrentResolution.isWeb ? 40 : 30,
+                ),
+                child: Text(
+                  'Todos os direitos reservados para o site HOPE Viagens © 2024${resolution == CurrentResolution.isWeb ? '  |  ' : '\n'}Site desenvolvido por: Turbo Design.',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: AppColors.hopeGrey,
+                    fontSize: 14,
+                    fontWeight: FontWeightHelper.bold,
                   ),
                 ),
               ),

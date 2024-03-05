@@ -13,19 +13,19 @@ class InformativeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return resolution == CurrentResolution.isCellPhone
-        ? _buildMobile()
-        : _buildWeb();
+    return resolution == CurrentResolution.isWeb
+        ? _buildWeb()
+        : _buildMobile();
   }
 
   Widget _buildMobile() {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text.rich(
               TextSpan(
@@ -48,6 +48,7 @@ class InformativeWidget extends StatelessWidget {
                 color: AppColors.hopeOrange,
                 height: 1,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 23,
@@ -59,6 +60,7 @@ class InformativeWidget extends StatelessWidget {
                 fontWeight: FontWeightHelper.medium,
                 color: AppColors.hopeBlack,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 20,
@@ -82,6 +84,7 @@ class InformativeWidget extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeightHelper.bold,
               ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
