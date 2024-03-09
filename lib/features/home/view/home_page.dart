@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar_mobile.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/custom_scroll_keys.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
@@ -17,16 +18,10 @@ import 'package:site_hope/general/widgets/main_offer_card_widget.dart';
 import 'package:site_hope/general/widgets/main_offer_card_widget_phone.dart';
 import 'package:site_hope/general/widgets/tickets_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
   });
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -74,16 +69,12 @@ class _HomePageState extends State<HomePage> {
                     height: 40,
                   ),
                   if (resolution != CurrentResolution.isCellPhone) ...{
-                    CustomAppBar(
-                      ticketsKey: CustomScrollKeys.ticketsKey,
-                      hotelsKey: CustomScrollKeys.hotelsKey,
-                      packagesKey: CustomScrollKeys.packagesKey,
+                    const CustomAppBar(
+                      currentPage: PagesEnum.home,
                     ),
                   } else ...{
-                    CustomAppBarMobile(
-                      ticketsKey: CustomScrollKeys.ticketsKey,
-                      hotelsKey: CustomScrollKeys.hotelsKey,
-                      packagesKey: CustomScrollKeys.packagesKey,
+                    const CustomAppBarMobile(
+                      currentPage: PagesEnum.home,
                     ),
                   },
                 ],

@@ -2,23 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
+import 'package:site_hope/general/custom_scroll_keys.dart';
 
-class CustomAppBar extends StatefulWidget {
-  final GlobalKey ticketsKey;
-  final GlobalKey hotelsKey;
-  final GlobalKey packagesKey;
+class CustomAppBar extends StatelessWidget {
+  final PagesEnum currentPage;
   const CustomAppBar({
     super.key,
-    required this.ticketsKey,
-    required this.hotelsKey,
-    required this.packagesKey,
+    required this.currentPage,
   });
 
-  @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 text: 'Passagens Aéreas',
                 onTap: () {
                   Scrollable.ensureVisible(
-                    widget.ticketsKey.currentContext!,
+                    CustomScrollKeys.ticketsKey.currentContext!,
                     duration: const Duration(
                       milliseconds: 500,
                     ),
@@ -62,7 +55,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 text: 'Hotéis',
                 onTap: () {
                   Scrollable.ensureVisible(
-                    widget.hotelsKey.currentContext!,
+                    CustomScrollKeys.hotelsKey.currentContext!,
                     duration: const Duration(
                       milliseconds: 500,
                     ),
@@ -77,7 +70,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 text: 'Pacotes',
                 onTap: () {
                   Scrollable.ensureVisible(
-                    widget.packagesKey.currentContext!,
+                    CustomScrollKeys.packagesKey.currentContext!,
                     duration: const Duration(
                       milliseconds: 500,
                     ),
@@ -94,6 +87,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 onTap: () {
                   context.go('/about');
                 },
+                isSelected: currentPage == PagesEnum.about,
               ),
               const SizedBox(
                 width: 24,
@@ -103,6 +97,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 onTap: () {
                   context.go('/blog');
                 },
+                isSelected: currentPage == PagesEnum.blog,
               ),
             ],
           ),

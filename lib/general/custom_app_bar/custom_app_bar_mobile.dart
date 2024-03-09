@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
+import 'package:site_hope/general/custom_scroll_keys.dart';
 
 class CustomAppBarMobile extends StatefulWidget {
-  final GlobalKey ticketsKey;
-  final GlobalKey hotelsKey;
-  final GlobalKey packagesKey;
+  final PagesEnum currentPage;
   const CustomAppBarMobile({
     super.key,
-    required this.ticketsKey,
-    required this.hotelsKey,
-    required this.packagesKey,
+    required this.currentPage,
   });
 
   @override
@@ -82,7 +80,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             onTap: () {
               _controller.collapse();
               Scrollable.ensureVisible(
-                widget.ticketsKey.currentContext!,
+                CustomScrollKeys.ticketsKey.currentContext!,
                 duration: const Duration(
                   milliseconds: 500,
                 ),
@@ -101,7 +99,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             onTap: () {
               _controller.collapse();
               Scrollable.ensureVisible(
-                widget.hotelsKey.currentContext!,
+                CustomScrollKeys.hotelsKey.currentContext!,
                 duration: const Duration(
                   milliseconds: 500,
                 ),
@@ -121,7 +119,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             onTap: () {
               _controller.collapse();
               Scrollable.ensureVisible(
-                widget.packagesKey.currentContext!,
+                CustomScrollKeys.packagesKey.currentContext!,
                 duration: const Duration(
                   milliseconds: 500,
                 ),
@@ -132,20 +130,22 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
           const SizedBox(
             height: 24,
           ),
-          const AppBarButton(
+          AppBarButton(
             text: 'Sobre Nós',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
+            isSelected: widget.currentPage == PagesEnum.about,
           ),
           const SizedBox(
             height: 24,
           ),
-          const AppBarButton(
+          AppBarButton(
             text: 'Blog',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
+            isSelected: widget.currentPage == PagesEnum.blog,
           ),
         ],
       ),
