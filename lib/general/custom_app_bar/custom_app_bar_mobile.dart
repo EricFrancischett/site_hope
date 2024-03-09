@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
@@ -77,15 +78,30 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
-            onTap: () {
+            onTap: () async {
               _controller.collapse();
-              Scrollable.ensureVisible(
-                CustomScrollKeys.ticketsKey.currentContext!,
-                duration: const Duration(
-                  milliseconds: 500,
-                ),
-                alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
-              );
+              if (widget.currentPage != PagesEnum.home) {
+                context.go('/');
+                Future.delayed(
+                  const Duration(milliseconds: 500),
+                ).then((value) {
+                  Scrollable.ensureVisible(
+                    CustomScrollKeys.ticketsKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                });
+              } else {
+                Scrollable.ensureVisible(
+                  CustomScrollKeys.ticketsKey.currentContext!,
+                  duration: const Duration(
+                    milliseconds: 500,
+                  ),
+                  alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                );
+              }
             },
           ),
           const SizedBox(
@@ -98,14 +114,28 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             selectedColor: AppColors.hopeOrange,
             onTap: () {
               _controller.collapse();
-              Scrollable.ensureVisible(
-                CustomScrollKeys.hotelsKey.currentContext!,
-                duration: const Duration(
-                  milliseconds: 500,
-                ),
-                alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                alignment: 4,
-              );
+              if (widget.currentPage != PagesEnum.home) {
+                context.go('/');
+                Future.delayed(
+                  const Duration(milliseconds: 500),
+                ).then((value) {
+                  Scrollable.ensureVisible(
+                    CustomScrollKeys.hotelsKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                });
+              } else {
+                Scrollable.ensureVisible(
+                  CustomScrollKeys.hotelsKey.currentContext!,
+                  duration: const Duration(
+                    milliseconds: 500,
+                  ),
+                  alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                );
+              }
             },
           ),
           const SizedBox(
@@ -118,13 +148,28 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             selectedColor: AppColors.hopeOrange,
             onTap: () {
               _controller.collapse();
-              Scrollable.ensureVisible(
-                CustomScrollKeys.packagesKey.currentContext!,
-                duration: const Duration(
-                  milliseconds: 500,
-                ),
-                alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
-              );
+              if (widget.currentPage != PagesEnum.home) {
+                context.go('/');
+                Future.delayed(
+                  const Duration(milliseconds: 500),
+                ).then((value) {
+                  Scrollable.ensureVisible(
+                    CustomScrollKeys.packagesKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                });
+              } else {
+                Scrollable.ensureVisible(
+                  CustomScrollKeys.packagesKey.currentContext!,
+                  duration: const Duration(
+                    milliseconds: 500,
+                  ),
+                  alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                );
+              }
             },
           ),
           const SizedBox(
@@ -136,6 +181,9 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
             isSelected: widget.currentPage == PagesEnum.about,
+            onTap: () {
+              context.go('/about');
+            },
           ),
           const SizedBox(
             height: 24,
@@ -146,6 +194,9 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
             isSelected: widget.currentPage == PagesEnum.blog,
+            onTap: () {
+              context.go('/blog');
+            },
           ),
         ],
       ),

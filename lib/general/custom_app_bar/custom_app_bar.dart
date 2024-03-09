@@ -39,13 +39,28 @@ class CustomAppBar extends StatelessWidget {
               AppBarButton(
                 text: 'Passagens Aéreas',
                 onTap: () {
-                  Scrollable.ensureVisible(
-                    CustomScrollKeys.ticketsKey.currentContext!,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                  );
+                  if (currentPage != PagesEnum.home) {
+                    context.go('/');
+                    Future.delayed(
+                      const Duration(milliseconds: 500),
+                    ).then((value) {
+                      Scrollable.ensureVisible(
+                        CustomScrollKeys.ticketsKey.currentContext!,
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                        alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                      );
+                    });
+                  } else {
+                    Scrollable.ensureVisible(
+                      CustomScrollKeys.ticketsKey.currentContext!,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                    );
+                  }
                 },
               ),
               const SizedBox(
@@ -54,13 +69,28 @@ class CustomAppBar extends StatelessWidget {
               AppBarButton(
                 text: 'Hotéis',
                 onTap: () {
-                  Scrollable.ensureVisible(
-                    CustomScrollKeys.hotelsKey.currentContext!,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                  );
+                  if (currentPage != PagesEnum.home) {
+                    context.go('/');
+                    Future.delayed(
+                      const Duration(milliseconds: 500),
+                    ).then((value) {
+                      Scrollable.ensureVisible(
+                        CustomScrollKeys.hotelsKey.currentContext!,
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                        alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                      );
+                    });
+                  } else {
+                    Scrollable.ensureVisible(
+                      CustomScrollKeys.hotelsKey.currentContext!,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                    );
+                  }
                 },
               ),
               const SizedBox(
@@ -69,13 +99,28 @@ class CustomAppBar extends StatelessWidget {
               AppBarButton(
                 text: 'Pacotes',
                 onTap: () {
-                  Scrollable.ensureVisible(
-                    CustomScrollKeys.packagesKey.currentContext!,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                  );
+                  if (currentPage != PagesEnum.home) {
+                    context.go('/');
+                    Future.delayed(
+                      const Duration(milliseconds: 500),
+                    ).then((value) {
+                      Scrollable.ensureVisible(
+                        CustomScrollKeys.packagesKey.currentContext!,
+                        duration: const Duration(
+                          milliseconds: 500,
+                        ),
+                        alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                      );
+                    });
+                  } else {
+                    Scrollable.ensureVisible(
+                      CustomScrollKeys.packagesKey.currentContext!,
+                      duration: const Duration(
+                        milliseconds: 500,
+                      ),
+                      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                    );
+                  }
                 },
               ),
             ],
