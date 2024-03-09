@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
 
 class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key});
+  final GlobalKey ticketsKey;
+  final GlobalKey hotelsKey;
+  final GlobalKey packagesKey;
+  const CustomAppBar({
+    super.key,
+    required this.ticketsKey,
+    required this.hotelsKey,
+    required this.packagesKey,
+  });
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -34,45 +43,66 @@ class _CustomAppBarState extends State<CustomAppBar> {
               const SizedBox(
                 width: 24,
               ),
-              const AppBarButton(
+              AppBarButton(
                 text: 'Passagens Aéreas',
+                onTap: () {
+                  Scrollable.ensureVisible(
+                    widget.ticketsKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                },
               ),
               const SizedBox(
                 width: 24,
               ),
-              const AppBarButton(
+              AppBarButton(
                 text: 'Hotéis',
+                onTap: () {
+                  Scrollable.ensureVisible(
+                    widget.hotelsKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                },
               ),
               const SizedBox(
                 width: 24,
               ),
-              const AppBarButton(
+              AppBarButton(
                 text: 'Pacotes',
-              ),
-              const SizedBox(
-                width: 24,
-              ),
-              const AppBarButton(
-                text: 'Aluguel de Carro',
-              ),
-              const SizedBox(
-                width: 24,
-              ),
-              const AppBarButton(
-                text: 'Passeios',
+                onTap: () {
+                  Scrollable.ensureVisible(
+                    widget.packagesKey.currentContext!,
+                    duration: const Duration(
+                      milliseconds: 500,
+                    ),
+                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                  );
+                },
               ),
             ],
           ),
-          const Row(
+          Row(
             children: [
               AppBarButton(
                 text: 'Sobre Nós',
+                onTap: () {
+                  context.go('/about');
+                },
               ),
-              SizedBox(
+              const SizedBox(
                 width: 24,
               ),
               AppBarButton(
                 text: 'Blog',
+                onTap: () {
+                  context.go('/blog');
+                },
               ),
             ],
           ),

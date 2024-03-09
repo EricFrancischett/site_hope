@@ -3,13 +3,22 @@ import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
 
 class CustomAppBarMobile extends StatefulWidget {
-  const CustomAppBarMobile({super.key});
+  final GlobalKey ticketsKey;
+  final GlobalKey hotelsKey;
+  final GlobalKey packagesKey;
+  const CustomAppBarMobile({
+    super.key,
+    required this.ticketsKey,
+    required this.hotelsKey,
+    required this.packagesKey,
+  });
 
   @override
   State<CustomAppBarMobile> createState() => _CustomAppBarMobileState();
 }
 
 class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
+  final ExpansionTileController _controller = ExpansionTileController();
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
@@ -20,6 +29,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
         hoverColor: Colors.transparent,
       ),
       child: ExpansionTile(
+        controller: _controller,
         childrenPadding: const EdgeInsets.symmetric(
           horizontal: 30,
           vertical: 20,
@@ -63,14 +73,24 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
           color: isExpanded ? AppColors.hopeOrange : AppColors.hopeWhite,
           size: 29,
         ),
-        children: const [
+        children: [
           AppBarButton(
             text: 'Passagens Aéreas',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
+            onTap: () {
+              _controller.collapse();
+              Scrollable.ensureVisible(
+                widget.ticketsKey.currentContext!,
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+                alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+              );
+            },
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           AppBarButton(
@@ -78,8 +98,19 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
+            onTap: () {
+              _controller.collapse();
+              Scrollable.ensureVisible(
+                widget.hotelsKey.currentContext!,
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+                alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+                alignment: 4,
+              );
+            },
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           AppBarButton(
@@ -87,29 +118,30 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
+            onTap: () {
+              _controller.collapse();
+              Scrollable.ensureVisible(
+                widget.packagesKey.currentContext!,
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
+                alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+              );
+            },
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
-          AppBarButton(
-            text: 'Aluguel de Carro',
-            fontColor: AppColors.hopeDarkGrey,
-            hoverColor: AppColors.hopeOrange,
-            selectedColor: AppColors.hopeOrange,
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          AppBarButton(
+          const AppBarButton(
             text: 'Sobre Nós',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
-          AppBarButton(
+          const AppBarButton(
             text: 'Blog',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,

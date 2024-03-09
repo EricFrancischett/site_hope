@@ -4,7 +4,9 @@ import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/priced_card_widget.dart';
 
 class TicketsWidget extends StatelessWidget {
-  const TicketsWidget({super.key});
+  const TicketsWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

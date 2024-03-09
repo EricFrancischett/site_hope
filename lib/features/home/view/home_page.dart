@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar_mobile.dart';
+import 'package:site_hope/general/custom_scroll_keys.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
@@ -26,6 +27,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     final resolution = Resolutions.getResolution(context: context);
@@ -71,10 +73,18 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 40,
                   ),
-                  if (resolution == CurrentResolution.isWeb) ...{
-                    const CustomAppBar(),
+                  if (resolution != CurrentResolution.isCellPhone) ...{
+                    CustomAppBar(
+                      ticketsKey: CustomScrollKeys.ticketsKey,
+                      hotelsKey: CustomScrollKeys.hotelsKey,
+                      packagesKey: CustomScrollKeys.packagesKey,
+                    ),
                   } else ...{
-                    const CustomAppBarMobile(),
+                    CustomAppBarMobile(
+                      ticketsKey: CustomScrollKeys.ticketsKey,
+                      hotelsKey: CustomScrollKeys.hotelsKey,
+                      packagesKey: CustomScrollKeys.packagesKey,
+                    ),
                   },
                 ],
               ),
@@ -93,13 +103,19 @@ class _HomePageState extends State<HomePage> {
                       child: const IntroWidget(),
                     ),
                     const SizedBox(
-                      height: 60,
+                      height: 30,
                     ),
-                    const Center(
-                      child: TicketsWidget(),
+                    Padding(
+                      key: CustomScrollKeys.ticketsKey,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 30,
+                      ),
+                      child: const Center(
+                        child: TicketsWidget(),
+                      ),
                     ),
                     const SizedBox(
-                      height: 40,
+                      height: 10,
                     ),
                     Padding(
                       padding: EdgeInsets.all(
@@ -118,23 +134,31 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 80,
                     ),
-                    const Center(
-                      child: HighlightPacksWidget(),
+                    Padding(
+                      key: CustomScrollKeys.packagesKey,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 30,
+                      ),
+                      child: const Center(
+                        child: HighlightPacksWidget(),
+                      ),
                     ),
                     const SizedBox(
-                      height: 80,
+                      height: 50,
                     ),
                     Padding(
+                      key: CustomScrollKeys.hotelsKey,
                       padding: EdgeInsets.symmetric(
                         horizontal:
                             resolution == CurrentResolution.isWeb ? 40 : 30,
+                        vertical: 30,
                       ),
                       child: HotelsWidget(
                         resolution: resolution,
                       ),
                     ),
                     const SizedBox(
-                      height: 80,
+                      height: 50,
                     ),
                   ],
                 ),
