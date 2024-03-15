@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/custom_trip_card.dart';
+import 'package:site_hope/general/widgets/religious_quotes.dart';
 
 class IntroWidget extends StatelessWidget {
   const IntroWidget({super.key});
@@ -15,28 +16,9 @@ class IntroWidget extends StatelessWidget {
         SizedBox(
           height: 40,
         ),
-        Center(
-          child: SizedBox(
-            width: 534,
-            child: Text(
-              '“May the God of HOPE fill you with all joy and peace as you trust in him, so that you may overflow with HOPE by the power of the Holy Spirit.”',
-              style: TextStyle(
-                fontWeight: FontWeightHelper.semiBold,
-                fontSize: 14,
-                color: AppColors.hopeOrange,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        Text(
-          'Rm 15:13',
-          style: TextStyle(
-            fontWeight: FontWeightHelper.light,
-            fontSize: 12,
-            color: AppColors.hopeOrange,
-          ),
-          textAlign: TextAlign.center,
+        ReligiousQuotes(
+          title: '“May the God of HOPE fill you with all joy and peace as you trust in him, so that you may overflow with HOPE by the power of the Holy Spirit.”',
+          subtitle: 'Rm 15:13',
         ),
         SizedBox(
           height: 40,

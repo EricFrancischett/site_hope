@@ -6,6 +6,10 @@ import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
+import 'package:site_hope/general/widgets/custom_trip_card.dart';
+import 'package:site_hope/general/widgets/our_history_widget.dart';
+import 'package:site_hope/general/widgets/our_service_widge.dart';
+import 'package:site_hope/general/widgets/religious_quotes.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
@@ -69,8 +73,62 @@ class AboutPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 80,
+            Center(
+              child: SizedBox(
+                width: 1024,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: resolution == CurrentResolution.isWeb ? 40 : 30,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(
+                        height: 60,
+                      ),
+                      const CustomTripCard(),
+                      const SizedBox(
+                        height: 60,
+                      ),
+                      const ReligiousQuotes(
+                        title:
+                            '"Tudo o que fizerem, façam de todo o coração, como para o Senhor..."',
+                        subtitle: 'Colossenses 3.23',
+                      ),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                        ),
+                        child: OurHistoryWidget(
+                          resolution: resolution,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      Container(
+                        height: 400,
+                        decoration: BoxDecoration(
+                          color: AppColors.hopeGrey,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      Center(
+                        child: OurService(
+                          resolution: resolution,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
             AppFooter(
               resolution: resolution,

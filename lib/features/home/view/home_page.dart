@@ -88,8 +88,8 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(
-                        resolution == CurrentResolution.isWeb ? 40 : 30,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: resolution == CurrentResolution.isWeb ? 40 : 30,
                       ),
                       child: const IntroWidget(),
                     ),
