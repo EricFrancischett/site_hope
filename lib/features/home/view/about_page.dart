@@ -11,6 +11,7 @@ import 'package:site_hope/general/widgets/our_history_widget.dart';
 import 'package:site_hope/general/widgets/our_service_widge.dart';
 import 'package:site_hope/general/widgets/religious_quotes.dart';
 
+// ignore: must_be_immutable
 class AboutPage extends StatelessWidget {
   const AboutPage({
     super.key,
@@ -87,7 +88,10 @@ class AboutPage extends StatelessWidget {
                       const SizedBox(
                         height: 60,
                       ),
-                      const CustomTripCard(),
+                      const CustomTripCard(
+                        imageUrl:
+                            'https://firebasestorage.googleapis.com/v0/b/hope-viagens.appspot.com/o/fotos%2FhomePic.png?alt=media&token=2b7b31ca-187a-4111-8ced-b98420757e35',
+                      ),
                       const SizedBox(
                         height: 60,
                       ),

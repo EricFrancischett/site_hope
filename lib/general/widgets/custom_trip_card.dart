@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/app_custom_button.dart';
 
 class CustomTripCard extends StatelessWidget {
-  const CustomTripCard({super.key});
+  final String imageUrl;
+  const CustomTripCard({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +17,14 @@ class CustomTripCard extends StatelessWidget {
       children: [
         Container(
           height: 260,
-          decoration: const BoxDecoration(
-            color: AppColors.hopeGrey,
-            borderRadius: BorderRadius.all(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(
+                imageUrl,
+              ),
+              fit: BoxFit.fitHeight,
+            ),
+            borderRadius: const BorderRadius.all(
               Radius.circular(30),
             ),
           ),

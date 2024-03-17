@@ -1,0 +1,48 @@
+{serviceImageUrl: a, hotels: [
+        {imageUrl: a
+        },
+        {imageUrl: a
+        },
+        {imageUrl: a
+        },
+        {imageUrl: a
+        }
+    ], destinations: [
+        {imageUrl: a, index: 0, title: a
+        },
+        {title: a, imageUrl: a, index: 1
+        },
+        {imageUrl: a, index: 2, title: a
+        },
+        {index: 3, imageUrl: a, title: a
+        }
+    ], faqImageUrl: a, homePicUrl: a, mainOffer: {price: a, title: a, description: a, imageUrl: a
+    }, packs: [
+        {type: a, title: a, days: 0, imageUrl: a, quantity: a
+        },
+        {type: a, imageUrl: a, days: 0, title: a, quantity: a
+        },
+        {imageUrl: a, quantity: a, title: a, days: 0, type: a
+        },
+        {title: a, days: 0, quantity: a, imageUrl: a, type: a
+        }
+    ], feedbacks: [
+        {location: a, imageUrl: a, message: a, name: a
+        },
+        {message: a, imageUrl: a, name: a, location: a
+        },
+        {location: a, imageUrl: a, message: a, name: a
+        },
+        {name: a, message: a, imageUrl: a, location: a
+        }
+    ], tickets: [
+        {description: a, imageUrl: a, price: a, title: a
+        },
+        {imageUrl: a, title: a, price: a, description: a
+        },
+        {title: a, description: a, price: a, imageUrl: a
+        },
+        {price: a, description: a, title: a, imageUrl: a
+        }
+    ]
+}

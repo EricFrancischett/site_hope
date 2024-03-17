@@ -5,29 +5,36 @@ import 'package:site_hope/general/widgets/custom_trip_card.dart';
 import 'package:site_hope/general/widgets/religious_quotes.dart';
 
 class IntroWidget extends StatelessWidget {
-  const IntroWidget({super.key});
+  final String imageUrl;
+  const IntroWidget({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
-        ReligiousQuotes(
-          title: '“May the God of HOPE fill you with all joy and peace as you trust in him, so that you may overflow with HOPE by the power of the Holy Spirit.”',
+        const ReligiousQuotes(
+          title:
+              '“May the God of HOPE fill you with all joy and peace as you trust in him, so that you may overflow with HOPE by the power of the Holy Spirit.”',
           subtitle: 'Rm 15:13',
         ),
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
-        CustomTripCard(),
-        SizedBox(
+        CustomTripCard(
+          imageUrl: imageUrl,
+        ),
+        const SizedBox(
           height: 60,
         ),
-        Center(
+        const Center(
           child: Text.rich(
             TextSpan(
               text: 'Viajar é mais do que visitar\nlugares, é ',
