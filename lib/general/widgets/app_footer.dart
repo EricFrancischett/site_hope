@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
+import 'package:site_hope/general/widgets/feedback_widget.dart';
 
 class AppFooter extends StatelessWidget {
   final CurrentResolution resolution;
@@ -13,10 +14,22 @@ class AppFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.hopeGrey,
-      child:
-          resolution == CurrentResolution.isWeb ? _buildWeb() : _buildMobile(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FeedbackWidget(
+          resolution: resolution,
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        Container(
+          color: AppColors.hopeGrey,
+          child: resolution == CurrentResolution.isWeb
+              ? _buildWeb()
+              : _buildMobile(),
+        ),
+      ],
     );
   }
 

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
+import 'package:site_hope/general/db_entity.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/highlight_packs_card_widget.dart';
 
 class HighlightPacksWidget extends StatelessWidget {
-  const HighlightPacksWidget({super.key});
+  final List<PackEntity> packs;
+  const HighlightPacksWidget({
+    super.key,
+    required this.packs,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +22,13 @@ class HighlightPacksWidget extends StatelessWidget {
           width: 1,
         ),
       ),
-      child: const Padding(
-        padding: EdgeInsets.only(top: 40, bottom: 24),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40, bottom: 24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 40),
               child: Text(
                 'Pacotes em Destaque',
@@ -40,29 +45,35 @@ class HighlightPacksWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                       ),
-                      HighlightPacksCardWidget(),
-                      SizedBox(
-                        width: 24,
-                      ),
-                      HighlightPacksCardWidget(),
-                      SizedBox(
-                        width: 24,
-                      ),
-                      HighlightPacksCardWidget(),
-                      SizedBox(
-                        width: 24,
-                      ),
-                      HighlightPacksCardWidget(),
-                      SizedBox(
-                        width: 40,
+                      ...packs.map(
+                        (pack) {
+                          return Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              HighlightPacksCardWidget(
+                                title: pack.title,
+                                type: pack.type,
+                                quantity: pack.quantity,
+                                period: pack.period,
+                                imageUrl: pack.imageUrl,
+                              ),
+                              const SizedBox(
+                                width: 24,
+                              ),
+                            ],
+                          );
+                        },
+                      ).toList(),
+                      const SizedBox(
+                        width: 16,
                       ),
                     ],
                   ),

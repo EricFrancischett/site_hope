@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
-import 'package:site_hope/general/widgets/feedback_widget.dart';
 
 class OurService extends StatelessWidget {
   final CurrentResolution resolution;
@@ -66,31 +65,6 @@ class OurService extends StatelessWidget {
               color: AppColors.hopeBlack,
             ),
             textAlign: TextAlign.center,
-          ),
-        ),
-        const SizedBox(
-          height: 80,
-        ),
-        FeedbackWidget(
-          resolution: resolution,
-          customMessage: const Text.rich(
-            TextSpan(
-              text: 'Acompanhamos você',
-              children: [
-                TextSpan(
-                  text: ' antes, durante e depois da viagem',
-                  style: TextStyle(
-                    fontWeight: FontWeightHelper.semiBold,
-                  ),
-                ),
-              ],
-            ),
-            style: TextStyle(
-              height: 1.2,
-              fontSize: 24,
-              fontWeight: FontWeightHelper.extraBold,
-              color: AppColors.hopeBlack,
-            ),
           ),
         ),
         const SizedBox(

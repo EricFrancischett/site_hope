@@ -3,7 +3,15 @@ import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 
 class DestinationCardWidget extends StatefulWidget {
-  const DestinationCardWidget({super.key});
+  final String title;
+  final String imageUrl;
+  final int index;
+  const DestinationCardWidget({
+    super.key,
+    required this.title,
+    required this.imageUrl,
+    required this.index,
+  });
 
   @override
   State<DestinationCardWidget> createState() => _DestinationCardWidgetState();
@@ -46,9 +54,13 @@ class _DestinationCardWidgetState extends State<DestinationCardWidget> {
                           horizontal: 12,
                           vertical: 9,
                         ),
-                        decoration: const BoxDecoration(
-                          color: AppColors.hopeGrey,
-                          borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              widget.imageUrl,
+                            ),
+                          ),
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(16),
                             topRight: Radius.circular(16),
                           ),
@@ -63,10 +75,10 @@ class _DestinationCardWidgetState extends State<DestinationCardWidget> {
                             color: AppColors.hopeYellow,
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              'T0P 01',
-                              style: TextStyle(
+                              'T0P 0${widget.index}',
+                              style: const TextStyle(
                                 fontWeight: FontWeightHelper.black,
                                 fontSize: 10,
                                 color: AppColors.hopeBlack,
@@ -103,7 +115,7 @@ class _DestinationCardWidgetState extends State<DestinationCardWidget> {
                     ),
                     child: Center(
                       child: Text(
-                        'GRAMADO',
+                        widget.title,
                         style: TextStyle(
                           fontWeight: isHovered
                               ? FontWeightHelper.black

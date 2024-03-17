@@ -5,9 +5,11 @@ import 'package:site_hope/general/resolutions.dart';
 
 class FaqWidget extends StatelessWidget {
   final CurrentResolution resolution;
+  final String imageUrl;
   const FaqWidget({
     super.key,
     required this.resolution,
+    required this.imageUrl,
   });
 
   @override
@@ -22,7 +24,10 @@ class FaqWidget extends StatelessWidget {
             width: 423,
             height: 715,
             decoration: BoxDecoration(
-              color: AppColors.hopeGrey,
+              image: DecorationImage(
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.fitHeight,
+              ),
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -92,8 +97,7 @@ class FaqWidget extends StatelessWidget {
                   height: 8,
                 ),
                 FaqQuestionWidget(
-                  question:
-                      'Posso personalizar meu próprio pacote de viagem?',
+                  question: 'Posso personalizar meu próprio pacote de viagem?',
                   answer:
                       'Sim, é possível personalizar pacotes de viagem de acordo com suas preferências e necessidades. Fale conosco para criar a viagem dos seus sonhos.',
                 ),

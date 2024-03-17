@@ -5,17 +5,17 @@ import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_custom_button.dart';
 
 class InformativeWidget extends StatelessWidget {
+  final String imageUrl;
   final CurrentResolution resolution;
   const InformativeWidget({
     super.key,
     required this.resolution,
+    required this.imageUrl,
   });
 
   @override
   Widget build(BuildContext context) {
-    return resolution == CurrentResolution.isWeb
-        ? _buildWeb()
-        : _buildMobile();
+    return resolution == CurrentResolution.isWeb ? _buildWeb() : _buildMobile();
   }
 
   Widget _buildMobile() {
@@ -91,7 +91,9 @@ class InformativeWidget extends StatelessWidget {
         const SizedBox(
           height: 80,
         ),
-        const TipsWidget()
+        TipsWidget(
+          imageUrl: imageUrl,
+        ),
       ],
     );
   }
@@ -168,7 +170,9 @@ class InformativeWidget extends StatelessWidget {
           const SizedBox(
             width: 78,
           ),
-          const TipsWidget()
+          TipsWidget(
+            imageUrl: imageUrl,
+          ),
         ],
       ),
     );
@@ -176,7 +180,8 @@ class InformativeWidget extends StatelessWidget {
 }
 
 class TipsWidget extends StatefulWidget {
-  const TipsWidget({super.key});
+  final String imageUrl;
+  const TipsWidget({super.key, required this.imageUrl});
 
   @override
   State<TipsWidget> createState() => _TipsWidgetState();
@@ -217,9 +222,13 @@ class _TipsWidgetState extends State<TipsWidget> {
                       horizontal: 12,
                       vertical: 9,
                     ),
-                    decoration: const BoxDecoration(
-                      color: AppColors.hopeGrey,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          widget.imageUrl,
+                        ),
+                      ),
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
                       ),

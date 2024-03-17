@@ -4,7 +4,19 @@ import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/app_custom_button.dart';
 
 class HighlightPacksCardWidget extends StatelessWidget {
-  const HighlightPacksCardWidget({super.key});
+  final String title;
+  final String type;
+  final String quantity;
+  final String period;
+  final String imageUrl;
+  const HighlightPacksCardWidget({
+    super.key,
+    required this.title,
+    required this.type,
+    required this.quantity,
+    required this.period,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +35,9 @@ class HighlightPacksCardWidget extends StatelessWidget {
                   horizontal: 12,
                   vertical: 9,
                 ),
-                decoration: const BoxDecoration(
-                  color: AppColors.hopeGrey,
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: NetworkImage(imageUrl)),
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
@@ -76,48 +88,48 @@ class HighlightPacksCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Text(
-                      'GRAMADO',
-                      style: TextStyle(
+                      title,
+                      style: const TextStyle(
                         fontWeight: FontWeightHelper.semiBold,
                         fontSize: 14,
                         color: AppColors.hopeBlack,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
-                      'Aéreo + Hotél',
-                      style: TextStyle(
+                      type,
+                      style: const TextStyle(
                         fontWeight: FontWeightHelper.bold,
                         fontSize: 12,
                         color: AppColors.hopeBlack,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Text(
-                      '2 adultos + 2 crianças',
-                      style: TextStyle(
+                      quantity,
+                      style: const TextStyle(
                         fontWeight: FontWeightHelper.medium,
                         fontSize: 12,
                         color: AppColors.hopeBlack,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Text(
-                      '5 diárias',
-                      style: TextStyle(
+                      period,
+                      style: const TextStyle(
                         fontWeight: FontWeightHelper.extraBold,
                         fontSize: 18,
                         color: AppColors.hopeOrange,

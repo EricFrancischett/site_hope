@@ -11,14 +11,11 @@ import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
 import 'package:site_hope/general/widgets/destination_widget.dart';
 import 'package:site_hope/general/widgets/faq_widget.dart';
-import 'package:site_hope/general/widgets/feedback_widget.dart';
 import 'package:site_hope/general/widgets/hilghlight_packs_widget.dart';
 import 'package:site_hope/general/widgets/hotels_widget.dart';
 import 'package:site_hope/general/widgets/informative_widget.dart';
 import 'package:site_hope/general/widgets/intro_widget.dart';
 import 'package:site_hope/general/widgets/main_offer_card_widget.dart';
-import 'package:site_hope/general/widgets/main_offer_card_widget_phone.dart';
-import 'package:site_hope/general/widgets/tickets_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -181,8 +178,10 @@ class _HomePageState extends State<HomePage> {
                               const SizedBox(
                                 height: 40,
                               ),
-                              const Center(
-                                child: DestinationWidget(),
+                              Center(
+                                child: DestinationWidget(
+                                  destinations: entity.destinations,
+                                ),
                               ),
                               const SizedBox(
                                 height: 80,
@@ -192,8 +191,10 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 30,
                                 ),
-                                child: const Center(
-                                  child: HighlightPacksWidget(),
+                                child: Center(
+                                  child: HighlightPacksWidget(
+                                    packs: entity.packs,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -210,17 +211,12 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: HotelsWidget(
                                   resolution: resolution,
+                                  hotels: entity.hotels,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 50,
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      FeedbackWidget(
-                        resolution: resolution,
                       ),
                       const SizedBox(
                         height: 80,
@@ -239,6 +235,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 InformativeWidget(
                                   resolution: resolution,
+                                  imageUrl: entity.serviceImageUrl,
                                 ),
                               ],
                             ),
@@ -255,6 +252,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: FaqWidget(
                             resolution: resolution,
+                            imageUrl: entity.faqImageUrl,
                           ),
                         ),
                       ),

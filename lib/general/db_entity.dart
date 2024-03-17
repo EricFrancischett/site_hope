@@ -156,14 +156,14 @@ class PackEntity {
   String title;
   String type;
   String quantity;
-  int days;
+  String period;
   String imageUrl;
 
   PackEntity({
     required this.title,
     required this.type,
     required this.quantity,
-    required this.days,
+    required this.period,
     required this.imageUrl,
   });
 
@@ -172,7 +172,7 @@ class PackEntity {
       'title': title,
       'type': type,
       'quantity': quantity,
-      'days': days,
+      'days': period,
       'imageUrl': imageUrl,
     };
   }
@@ -182,7 +182,7 @@ class PackEntity {
       title: map['title'],
       type: map['type'],
       quantity: map['quantity'],
-      days: map['days'],
+      period: map['period'],
       imageUrl: map['imageUrl'],
     );
   }
@@ -190,20 +190,24 @@ class PackEntity {
 
 class HotelEntity {
   String imageUrl;
+  String name;
 
   HotelEntity({
     required this.imageUrl,
+    required this.name,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'imageUrl': imageUrl,
+      'name': name,
     };
   }
 
   factory HotelEntity.fromMap(Map<String, dynamic> map) {
     return HotelEntity(
       imageUrl: map['imageUrl'],
+      name: map['name'],
     );
   }
 }
