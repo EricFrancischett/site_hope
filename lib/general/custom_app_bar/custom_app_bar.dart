@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/custom_scroll_keys.dart';
+import 'package:site_hope/general/image_constants.dart';
 
 class CustomAppBar extends StatelessWidget {
   final PagesEnum currentPage;
@@ -28,10 +30,8 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                width: 28,
-                height: 33,
-                color: AppColors.hopeWhite,
+              SvgPicture.asset(
+                ImageConstants.hopeSimbolo,
               ),
               const SizedBox(
                 width: 24,

@@ -50,7 +50,7 @@ class MainOfferCardWidget extends StatelessWidget {
           children: [
             Container(
               width: 302,
-              height: 217,
+              height: 218,
               decoration: BoxDecoration(
                 color: AppColors.hopeWhite,
                 borderRadius: BorderRadius.circular(30),

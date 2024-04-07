@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar.dart';
 import 'package:site_hope/general/custom_app_bar/custom_app_bar_mobile.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/custom_scroll_keys.dart';
-import 'package:site_hope/general/db_entity.dart';
+import 'package:site_hope/general/db_home_entity.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
+import 'package:site_hope/general/image_constants.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
 import 'package:site_hope/general/widgets/destination_widget.dart';
@@ -15,7 +17,6 @@ import 'package:site_hope/general/widgets/hilghlight_packs_widget.dart';
 import 'package:site_hope/general/widgets/hotels_widget.dart';
 import 'package:site_hope/general/widgets/informative_widget.dart';
 import 'package:site_hope/general/widgets/intro_widget.dart';
-import 'package:site_hope/general/widgets/main_offer_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   bool hasError = false;
   DocumentReference home =
       FirebaseFirestore.instance.collection('home').doc('homepage');
-  late DbEntity entity;
+  late DbHomeEntity entity;
   @override
   void initState() {
     setup();
@@ -41,7 +42,8 @@ class _HomePageState extends State<HomePage> {
   Future<void> setup() async {
     try {
       final DocumentSnapshot homeSnapshot = await home.get();
-      entity = DbEntity.fromMap(homeSnapshot.data()! as Map<String, dynamic>);
+      entity =
+          DbHomeEntity.fromMap(homeSnapshot.data()! as Map<String, dynamic>);
       setState(() {
         isLoading = false;
       });
@@ -95,10 +97,8 @@ class _HomePageState extends State<HomePage> {
                                 Visibility(
                                   visible: resolution !=
                                       CurrentResolution.isCellPhone,
-                                  child: Container(
-                                    width: 98,
-                                    height: 48,
-                                    color: AppColors.hopeOrange,
+                                  child: SvgPicture.asset(
+                                    ImageConstants.hopeLogo,
                                   ),
                                 ),
                                 const Text(
@@ -157,24 +157,24 @@ class _HomePageState extends State<HomePage> {
                               //     child: TicketsWidget(),
                               //   ),
                               // ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(
-                                  resolution == CurrentResolution.isWeb
-                                      ? 40
-                                      : 30,
-                                ),
-                                child: MainOfferCardWidget(
-                                  resolution: resolution,
-                                  title: entity.mainOffer.title,
-                                  description: entity.mainOffer.description,
-                                  price: entity.mainOffer.price,
-                                  paymentType: entity.mainOffer.payment,
-                                  imageUrl: entity.mainOffer.imageUrl,
-                                ),
-                              ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                              // Padding(
+                              //   padding: EdgeInsets.all(
+                              //     resolution == CurrentResolution.isWeb
+                              //         ? 40
+                              //         : 30,
+                              //   ),
+                              //   child: MainOfferCardWidget(
+                              //     resolution: resolution,
+                              //     title: entity.mainOffer.title,
+                              //     description: entity.mainOffer.description,
+                              //     price: entity.mainOffer.price,
+                              //     paymentType: entity.mainOffer.payment,
+                              //     imageUrl: entity.mainOffer.imageUrl,
+                              //   ),
+                              // ),
                               const SizedBox(
                                 height: 40,
                               ),

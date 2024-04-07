@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_button.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/custom_scroll_keys.dart';
+import 'package:site_hope/general/image_constants.dart';
 
 class CustomAppBarMobile extends StatefulWidget {
   final PagesEnum currentPage;
@@ -61,10 +63,17 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
         collapsedBackgroundColor: AppColors.hopeOrange,
         title: Align(
           alignment: Alignment.centerLeft,
-          child: Container(
-            width: 28,
-            height: 33,
-            color: isExpanded ? AppColors.hopeOrange : AppColors.hopeWhite,
+          child: SvgPicture.asset(
+            ImageConstants.hopeSimbolo,
+            colorFilter: !isExpanded
+                ? const ColorFilter.mode(
+                    AppColors.hopeWhite,
+                    BlendMode.srcIn,
+                  )
+                : const ColorFilter.mode(
+                    AppColors.hopeOrange,
+                    BlendMode.srcIn,
+                  ),
           ),
         ),
         trailing: Icon(

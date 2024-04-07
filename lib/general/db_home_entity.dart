@@ -1,22 +1,20 @@
-class DbEntity {
+class DbHomeEntity {
   String homePicUrl;
   List<TicketEntity> tickets;
   MainOfferEntity mainOffer;
   List<DestinationEntity> destinations;
   List<PackEntity> packs;
   List<HotelEntity> hotels;
-  List<FeedBackEntity> feedbacks;
   String serviceImageUrl;
   String faqImageUrl;
 
-  DbEntity({
+  DbHomeEntity({
     required this.homePicUrl,
     required this.tickets,
     required this.mainOffer,
     required this.destinations,
     required this.packs,
     required this.hotels,
-    required this.feedbacks,
     required this.serviceImageUrl,
     required this.faqImageUrl,
   });
@@ -30,14 +28,13 @@ class DbEntity {
           destinations.map((destination) => destination.toMap()).toList(),
       'packs': packs.map((pack) => pack.toMap()).toList(),
       'hotels': hotels.map((hotel) => hotel.toMap()).toList(),
-      'feedbacks': feedbacks.map((feedback) => feedback.toMap()).toList(),
       'serviceImageUrl': serviceImageUrl,
       'faqImageUrl': faqImageUrl,
     };
   }
 
-  factory DbEntity.fromMap(Map<String, dynamic> map) {
-    return DbEntity(
+  factory DbHomeEntity.fromMap(Map<String, dynamic> map) {
+    return DbHomeEntity(
       homePicUrl: map['homePicUrl'],
       tickets: List<TicketEntity>.from(
           map['tickets']?.map((ticket) => TicketEntity.fromMap(ticket))),
@@ -48,8 +45,6 @@ class DbEntity {
           map['packs']?.map((pack) => PackEntity.fromMap(pack))),
       hotels: List<HotelEntity>.from(
           map['hotels']?.map((hotel) => HotelEntity.fromMap(hotel))),
-      feedbacks: List<FeedBackEntity>.from(map['feedbacks']
-          ?.map((feedback) => FeedBackEntity.fromMap(feedback))),
       serviceImageUrl: map['serviceImageUrl'],
       faqImageUrl: map['faqImageUrl'],
     );
@@ -208,38 +203,6 @@ class HotelEntity {
     return HotelEntity(
       imageUrl: map['imageUrl'],
       name: map['name'],
-    );
-  }
-}
-
-class FeedBackEntity {
-  String name;
-  String location;
-  String message;
-  String imageUrl;
-
-  FeedBackEntity({
-    required this.name,
-    required this.location,
-    required this.message,
-    required this.imageUrl,
-  });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'location': location,
-      'message': message,
-      'imageUrl': imageUrl,
-    };
-  }
-
-  factory FeedBackEntity.fromMap(Map<String, dynamic> map) {
-    return FeedBackEntity(
-      name: map['name'],
-      location: map['location'],
-      message: map['message'],
-      imageUrl: map['imageUrl'],
     );
   }
 }

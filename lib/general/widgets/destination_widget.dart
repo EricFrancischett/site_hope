@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
-import 'package:site_hope/general/db_entity.dart';
+import 'package:site_hope/general/db_home_entity.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/widgets/destinations_card_widget.dart';
 
