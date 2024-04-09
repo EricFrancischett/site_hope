@@ -30,42 +30,23 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              SvgPicture.asset(
-                ImageConstants.hopeSimbolo,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    if (currentPage != PagesEnum.home) {
+                      context.go('/');
+                    }
+                  },
+                  child: SvgPicture.asset(
+                    ImageConstants.hopeSimbolo,
+                  ),
+                ),
               ),
-              const SizedBox(
-                width: 24,
-              ),
-              AppBarButton(
-                text: 'Passagens Aéreas',
-                onTap: () {
-                  if (currentPage != PagesEnum.home) {
-                    context.go('/');
-                    Future.delayed(
-                      const Duration(milliseconds: 500),
-                    ).then((value) {
-                      Scrollable.ensureVisible(
-                        CustomScrollKeys.ticketsKey.currentContext!,
-                        duration: const Duration(
-                          milliseconds: 500,
-                        ),
-                        alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                      );
-                    });
-                  } else {
-                    Scrollable.ensureVisible(
-                      CustomScrollKeys.ticketsKey.currentContext!,
-                      duration: const Duration(
-                        milliseconds: 500,
-                      ),
-                      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                    );
-                  }
-                },
-              ),
-              const SizedBox(
-                width: 24,
-              ),
+            ],
+          ),
+          Row(
+            children: [
               AppBarButton(
                 text: 'Hotéis',
                 onTap: () {
@@ -123,14 +104,27 @@ class CustomAppBar extends StatelessWidget {
                   }
                 },
               ),
-            ],
-          ),
-          Row(
-            children: [
+              const SizedBox(
+                width: 24,
+              ),
+              AppBarButton(
+                text: 'Aluguel de Carros',
+                onTap: () {
+                  if (currentPage != PagesEnum.carRent) {
+                    context.go('/aluguel-carros');
+                  }
+                },
+                isSelected: currentPage == PagesEnum.carRent,
+              ),
+              const SizedBox(
+                width: 24,
+              ),
               AppBarButton(
                 text: 'Sobre Nós',
                 onTap: () {
-                  context.go('/about');
+                  if (currentPage != PagesEnum.about) {
+                    context.go('/sobre');
+                  }
                 },
                 isSelected: currentPage == PagesEnum.about,
               ),
@@ -140,7 +134,9 @@ class CustomAppBar extends StatelessWidget {
               AppBarButton(
                 text: 'Blog',
                 onTap: () {
-                  context.go('/blog');
+                  if (currentPage != PagesEnum.blog) {
+                    context.go('/blog');
+                  }
                 },
                 isSelected: currentPage == PagesEnum.blog,
               ),

@@ -13,8 +13,8 @@ class FeedbackCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 298,
-      height: 260,
+      width: 260,
+      height: 300,
       decoration: BoxDecoration(
         color: AppColors.hopeWhite,
         borderRadius: BorderRadius.circular(30),
@@ -23,27 +23,50 @@ class FeedbackCardWidget extends StatelessWidget {
           color: AppColors.hopeGrey,
         ),
       ),
-      padding: const EdgeInsets.all(
-        30,
+      padding: const EdgeInsets.only(
+        top: 17,
+        bottom: 30,
+        left: 30,
+        right: 30,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             feedback.name,
             style: const TextStyle(
-              fontSize: 18,
-              color: AppColors.hopeBlack,
-              fontWeight: FontWeightHelper.semiBold,
-              height: 1,
-            ),
+                fontSize: 18,
+                color: AppColors.hopeBlack,
+                fontWeight: FontWeightHelper.semiBold,
+                height: 1),
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          Text(
+            feedback.locale,
+            style: const TextStyle(
+                fontSize: 12,
+                color: AppColors.hopeBlack,
+                fontWeight: FontWeightHelper.semiBold,
+                height: 1),
           ),
           const SizedBox(
             height: 16,
           ),
           Container(
-            color: AppColors.hopeOrange,
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  feedback.thumbUrl,
+                ),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(30),
+            ),
           ),
         ],
       ),

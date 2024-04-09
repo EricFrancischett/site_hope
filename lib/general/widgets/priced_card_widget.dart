@@ -130,11 +130,10 @@ class PricedCardWidget extends StatelessWidget {
           ),
           Transform.translate(
             offset: const Offset(0, -16),
-            child: Center(
+            child: const Center(
               child: SizedBox(
                 width: 79,
                 child: AppCustomButton(
-                  onTap: () {},
                   title: 'QUERO',
                   fontWeight: FontWeightHelper.semiBold,
                 ),

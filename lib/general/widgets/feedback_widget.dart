@@ -5,6 +5,7 @@ import 'package:site_hope/general/feedback_entity.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/feedback_card_widget.dart';
+import 'package:site_hope/general/widgets/feedback_video_dialog.dart';
 
 class FeedbackWidget extends StatefulWidget {
   final CurrentResolution resolution;
@@ -37,7 +38,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
       final Map<String, dynamic> response =
           homeSnapshot.data() as Map<String, dynamic>;
       final List<Map<String, dynamic>> feedbacks =
-          response['feedbacks'] as List<Map<String, dynamic>>;
+          (response['feedbacks'] as List<dynamic>).cast<Map<String, dynamic>>();
       feedBacks = feedbacks.map((e) => FeedBackEntity.fromMap(e)).toList();
       setState(() {
         isLoading = false;
@@ -101,24 +102,115 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                 ),
               )
             : Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: widget.resolution == CurrentResolution.isWeb
-                            ? 40
-                            : 30,
-                      ),
-                      child: message,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
                     ),
+                    child: message,
                   ),
                   const SizedBox(
                     height: 40,
                   ),
-                  FeedbackCardWidget(
-                    feedback: feedBacks[0],
+                  SizedBox(
+                    height: 300,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                      ),
+                      itemCount: feedBacks.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    surfaceTintColor: AppColors.hopeWhite,
+                                    backgroundColor: AppColors.hopeWhite,
+                                    child: Container(
+                                      width: 350,
+                                      padding: const EdgeInsets.all(30),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    feedBacks[index].name,
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                      color:
+                                                          AppColors.hopeBlack,
+                                                      fontWeight:
+                                                          FontWeightHelper
+                                                              .semiBold,
+                                                      height: 1,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 4,
+                                                  ),
+                                                  Text(
+                                                    feedBacks[index].locale,
+                                                    style: const TextStyle(
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.hopeBlack,
+                                                      fontWeight:
+                                                          FontWeightHelper
+                                                              .semiBold,
+                                                      height: 1,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              IconButton(
+                                                icon: const Icon(Icons.close),
+                                                onPressed:
+                                                    Navigator.of(context).pop,
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          FeedbackVideoDialog(
+                                            videoUrl: feedBacks[index].videoUrl,
+                                            resolution: widget.resolution,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: FeedbackCardWidget(
+                              feedback: feedBacks[index],
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          width: 20,
+                        );
+                      },
+                    ),
                   ),
                 ],
               );

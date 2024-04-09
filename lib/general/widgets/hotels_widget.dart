@@ -57,12 +57,11 @@ class HotelsWidget extends StatelessWidget {
         const SizedBox(
           height: 35,
         ),
-        Center(
+        const Center(
           child: SizedBox(
             width: 173,
             child: AppCustomButton(
               title: 'Quero saber mais!',
-              onTap: () {},
               fontWeight: FontWeightHelper.bold,
             ),
           ),

@@ -23,11 +23,11 @@ class InformativeWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
+        const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text.rich(
+            Text.rich(
               TextSpan(
                 text: 'Atendimento\n',
                 children: [
@@ -50,10 +50,10 @@ class InformativeWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 23,
             ),
-            const Text(
+            Text(
               'Com foco em segurança,\nnosso serviço é referência\nem viagens de famílias.',
               style: TextStyle(
                 fontSize: 18,
@@ -62,21 +62,20 @@ class InformativeWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
+            SizedBox(
               height: 20,
             ),
             SizedBox(
               width: 222,
               child: AppCustomButton(
                 title: 'Clique aqui e saiba mais!',
-                onTap: () {},
                 fontWeight: FontWeightHelper.bold,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 20,
             ),
-            const Text(
+            Text(
               'Viaje sem burocracia.',
               style: TextStyle(
                 color: AppColors.hopeOrange,
@@ -105,11 +104,11 @@ class InformativeWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
+          const Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text.rich(
+              Text.rich(
                 TextSpan(
                   text: 'Atendimento\n',
                   children: [
@@ -131,10 +130,10 @@ class InformativeWidget extends StatelessWidget {
                   height: 1,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 23,
               ),
-              const Text(
+              Text(
                 'Com foco em segurança, nosso serviço\né referência em viagens de famílias.',
                 style: TextStyle(
                   fontSize: 18,
@@ -142,21 +141,20 @@ class InformativeWidget extends StatelessWidget {
                   color: AppColors.hopeBlack,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
               SizedBox(
                 width: 375,
                 child: AppCustomButton(
                   title: 'Clique aqui e saiba mais sobre a nossa história!',
-                  onTap: () {},
                   fontWeight: FontWeightHelper.bold,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 'Viaje sem burocracia.',
                 style: TextStyle(
                   color: AppColors.hopeOrange,
@@ -274,13 +272,12 @@ class _TipsWidgetState extends State<TipsWidget> {
                   ),
                 ],
               ),
-              Positioned(
+              const Positioned(
                 bottom: -16,
                 child: SizedBox(
                   width: 215,
                   child: AppCustomButton(
                     title: 'Confira mais dicas aqui!',
-                    onTap: () {},
                     fontWeight: FontWeightHelper.bold,
                   ),
                 ),

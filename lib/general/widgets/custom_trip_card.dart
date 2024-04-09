@@ -4,9 +4,11 @@ import 'package:site_hope/general/widgets/app_custom_button.dart';
 
 class CustomTripCard extends StatelessWidget {
   final String imageUrl;
+  final double height;
   const CustomTripCard({
     super.key,
     required this.imageUrl,
+    this.height = 260,
   });
 
   @override
@@ -16,7 +18,7 @@ class CustomTripCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          height: 260,
+          height: height,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
@@ -31,11 +33,10 @@ class CustomTripCard extends StatelessWidget {
         ),
         Transform.translate(
           offset: const Offset(0, -16),
-          child: Center(
+          child: const Center(
             child: SizedBox(
               width: 260,
               child: AppCustomButton(
-                onTap: () {},
                 title: 'Personalize sua viagem aqui!',
                 fontWeight: FontWeightHelper.bold,
               ),

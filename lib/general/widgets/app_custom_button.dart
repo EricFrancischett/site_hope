@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
+import 'package:site_hope/general/url_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppCustomButton extends StatefulWidget {
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   final bool isOrange;
   final FontWeight fontWeight;
   const AppCustomButton({
     super.key,
     required this.title,
-    required this.onTap,
+    this.onTap,
     required this.fontWeight,
     this.isOrange = true,
   });
@@ -44,7 +46,15 @@ class _AppCustomButtonState extends State<AppCustomButton> {
         );
       },
       child: GestureDetector(
-        onTap: widget.onTap,
+        onTap: widget.onTap ??
+            () async {
+              await launchUrl(
+                Uri.parse(
+                  UrlConstants.whatsApp,
+                ),
+                mode: LaunchMode.externalApplication,
+              );
+            },
         child: AnimatedContainer(
           duration: _duration,
           height: 32,

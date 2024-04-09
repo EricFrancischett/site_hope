@@ -3,20 +3,20 @@ import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:video_player/video_player.dart';
 
-class OurStoryVideoWidget extends StatefulWidget {
+class FeedbackVideoDialog extends StatefulWidget {
   final String videoUrl;
   final CurrentResolution resolution;
-  const OurStoryVideoWidget({
+  const FeedbackVideoDialog({
     super.key,
     required this.videoUrl,
     required this.resolution,
   });
 
   @override
-  State<OurStoryVideoWidget> createState() => _OurStoryVideoWidgetState();
+  State<FeedbackVideoDialog> createState() => _FeedbackVideoDialogState();
 }
 
-class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
+class _FeedbackVideoDialogState extends State<FeedbackVideoDialog> {
   bool isHovering = false;
   late VideoPlayerController _controller;
 
@@ -33,7 +33,12 @@ class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
   }
 
   void _initVideoPlayer() async {
-    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl));
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(
+        widget.videoUrl,
+      ),
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    );
 
     /// Initialize the video player
     await _controller.initialize().then((value) => setState(() {}));

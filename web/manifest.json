@@ -1,11 +1,11 @@
 {
-    "name": "site_hope",
-    "short_name": "site_hope",
+    "name": "Hope Viagens",
+    "short_name": "Hope Viagens",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFFFFF",
+    "description": "Passagens aéreas, pacotes nacionais e internacionais, hotéis e pousadas.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

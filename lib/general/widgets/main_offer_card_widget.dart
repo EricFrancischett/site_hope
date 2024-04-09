@@ -103,13 +103,12 @@ class MainOfferCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: -16,
               left: 26,
               child: SizedBox(
                 width: 103,
                 child: AppCustomButton(
-                  onTap: () {},
                   title: 'EU QUERO',
                   isOrange: false,
                   fontWeight: FontWeightHelper.bold,
@@ -196,12 +195,11 @@ class MainOfferCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: -16,
               child: SizedBox(
                 width: 103,
                 child: AppCustomButton(
-                  onTap: () {},
                   title: 'EU QUERO',
                   isOrange: false,
                   fontWeight: FontWeightHelper.bold,

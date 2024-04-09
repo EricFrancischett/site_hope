@@ -63,17 +63,24 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
         collapsedBackgroundColor: AppColors.hopeOrange,
         title: Align(
           alignment: Alignment.centerLeft,
-          child: SvgPicture.asset(
-            ImageConstants.hopeSimbolo,
-            colorFilter: !isExpanded
-                ? const ColorFilter.mode(
-                    AppColors.hopeWhite,
-                    BlendMode.srcIn,
-                  )
-                : const ColorFilter.mode(
-                    AppColors.hopeOrange,
-                    BlendMode.srcIn,
-                  ),
+          child: GestureDetector(
+            onTap: () {
+              if (widget.currentPage != PagesEnum.home) {
+                context.go('/');
+              }
+            },
+            child: SvgPicture.asset(
+              ImageConstants.hopeSimbolo,
+              colorFilter: !isExpanded
+                  ? const ColorFilter.mode(
+                      AppColors.hopeWhite,
+                      BlendMode.srcIn,
+                    )
+                  : const ColorFilter.mode(
+                      AppColors.hopeOrange,
+                      BlendMode.srcIn,
+                    ),
+            ),
           ),
         ),
         trailing: Icon(
@@ -82,40 +89,37 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
           size: 29,
         ),
         children: [
-          AppBarButton(
-            text: 'Passagens Aéreas',
-            fontColor: AppColors.hopeDarkGrey,
-            hoverColor: AppColors.hopeOrange,
-            selectedColor: AppColors.hopeOrange,
-            onTap: () async {
-              _controller.collapse();
-              if (widget.currentPage != PagesEnum.home) {
-                context.go('/');
-                Future.delayed(
-                  const Duration(milliseconds: 500),
-                ).then((value) {
-                  Scrollable.ensureVisible(
-                    CustomScrollKeys.ticketsKey.currentContext!,
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                  );
-                });
-              } else {
-                Scrollable.ensureVisible(
-                  CustomScrollKeys.ticketsKey.currentContext!,
-                  duration: const Duration(
-                    milliseconds: 500,
-                  ),
-                  alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
-                );
-              }
-            },
-          ),
-          const SizedBox(
-            height: 24,
-          ),
+          // AppBarButton(
+          //   text: 'Passagens Aéreas',
+          //   fontColor: AppColors.hopeDarkGrey,
+          //   hoverColor: AppColors.hopeOrange,
+          //   selectedColor: AppColors.hopeOrange,
+          //   onTap: () async {
+          //     _controller.collapse();
+          //     if (widget.currentPage != PagesEnum.home) {
+          //       context.go('/');
+          //       Future.delayed(
+          //         const Duration(milliseconds: 500),
+          //       ).then((value) {
+          //         Scrollable.ensureVisible(
+          //           CustomScrollKeys.ticketsKey.currentContext!,
+          //           duration: const Duration(
+          //             milliseconds: 500,
+          //           ),
+          //           alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+          //         );
+          //       });
+          //     } else {
+          //       Scrollable.ensureVisible(
+          //         CustomScrollKeys.ticketsKey.currentContext!,
+          //         duration: const Duration(
+          //           milliseconds: 500,
+          //         ),
+          //         alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+          //       );
+          //     }
+          //   },
+          // ),
           AppBarButton(
             text: 'Hotéis',
             fontColor: AppColors.hopeDarkGrey,
@@ -185,13 +189,30 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             height: 24,
           ),
           AppBarButton(
+            text: 'Aluguel de Carros',
+            fontColor: AppColors.hopeDarkGrey,
+            hoverColor: AppColors.hopeOrange,
+            selectedColor: AppColors.hopeOrange,
+            isSelected: widget.currentPage == PagesEnum.carRent,
+            onTap: () {
+              if (widget.currentPage != PagesEnum.carRent) {
+                context.go('/aluguel-carros');
+              }
+            },
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          AppBarButton(
             text: 'Sobre Nós',
             fontColor: AppColors.hopeDarkGrey,
             hoverColor: AppColors.hopeOrange,
             selectedColor: AppColors.hopeOrange,
             isSelected: widget.currentPage == PagesEnum.about,
             onTap: () {
-              context.go('/about');
+              if (widget.currentPage != PagesEnum.about) {
+                context.go('/sobre');
+              }
             },
           ),
           const SizedBox(
@@ -204,7 +225,9 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
             selectedColor: AppColors.hopeOrange,
             isSelected: widget.currentPage == PagesEnum.blog,
             onTap: () {
-              context.go('/blog');
+              if (widget.currentPage != PagesEnum.blog) {
+                context.go('/blog');
+              }
             },
           ),
         ],

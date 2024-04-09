@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:site_hope/features/home/view/about_page.dart';
 import 'package:site_hope/features/home/view/blog_page.dart';
+import 'package:site_hope/features/home/view/carrent_page.dart';
 import 'package:site_hope/features/home/view/home_page.dart';
+import 'package:site_hope/features/home/view/hotels_page.dart';
 
 class RouterGenerator {
   static final GoRouter router = GoRouter(
@@ -17,7 +19,7 @@ class RouterGenerator {
         },
       ),
       GoRoute(
-        path: '/about',
+        path: '/sobre',
         pageBuilder: (context, state) {
           return buildAnimation(
             state,
@@ -31,6 +33,24 @@ class RouterGenerator {
           return buildAnimation(
             state,
             const BlogPage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/aluguel-carros',
+        pageBuilder: (context, state) {
+          return buildAnimation(
+            state,
+            const CarRentPage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/hotels',
+        pageBuilder: (context, state) {
+          return buildAnimation(
+            state,
+            const HotelsPage(),
           );
         },
       ),

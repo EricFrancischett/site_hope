@@ -1,31 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
-import 'package:site_hope/general/db_about_entity.dart';
+import 'package:site_hope/general/db_carrent_entity.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/widgets/app_bar_widget.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
-import 'package:site_hope/general/widgets/custom_trip_card.dart';
-import 'package:site_hope/general/widgets/our_history_widget.dart';
-import 'package:site_hope/general/widgets/our_service_widge.dart';
-import 'package:site_hope/general/widgets/religious_quotes.dart';
+import 'package:site_hope/general/widgets/hotels_grid_widget.dart';
+import 'package:site_hope/general/widgets/intro_carrent_widget.dart';
 
-// ignore: must_be_immutable
-class AboutPage extends StatefulWidget {
-  const AboutPage({
+class HotelsPage extends StatefulWidget {
+  const HotelsPage({
     super.key,
   });
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<HotelsPage> createState() => _HotelsPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _HotelsPageState extends State<HotelsPage> {
   bool isLoading = true;
   bool hasError = false;
   DocumentReference home =
-      FirebaseFirestore.instance.collection('home').doc('aboutpage');
-  late DbAboutEntity entity;
+      FirebaseFirestore.instance.collection('home').doc('carrent');
+  late DbCarRentEntity entity;
   @override
   void initState() {
     setup();
@@ -36,7 +33,7 @@ class _AboutPageState extends State<AboutPage> {
     try {
       final DocumentSnapshot homeSnapshot = await home.get();
       entity =
-          DbAboutEntity.fromMap(homeSnapshot.data()! as Map<String, dynamic>);
+          DbCarRentEntity.fromMap(homeSnapshot.data()! as Map<String, dynamic>);
       setState(() {
         isLoading = false;
       });
@@ -91,48 +88,24 @@ class _AboutPageState extends State<AboutPage> {
                                   : 30,
                             ),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                const SizedBox(
-                                  height: 60,
-                                ),
-                                CustomTripCard(
-                                  imageUrl: entity.aboutPicUrl,
-                                ),
-                                const SizedBox(
-                                  height: 60,
-                                ),
-                                const ReligiousQuotes(
-                                  title:
-                                      '"Tudo o que fizerem, façam de todo o coração, como para o Senhor..."',
-                                  subtitle: 'Colossenses 3.23',
+                                IntroCarRentWidget(
+                                  imageUrl: entity.carRentPicUrl,
                                 ),
                                 const SizedBox(
                                   height: 80,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                  ),
-                                  child: OurHistoryWidget(
-                                    resolution: resolution,
-                                    videoUrl: entity.ourStoryVideoUrl,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 80,
-                                ),
-                                Center(
-                                  child: OurService(
-                                    resolution: resolution,
-                                  ),
-                                )
                               ],
                             ),
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      const HotelsGridWidget(),
                       AppFooter(
                         resolution: resolution,
                       ),

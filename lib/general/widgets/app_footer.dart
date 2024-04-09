@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
+import 'package:site_hope/general/url_constants.dart';
 import 'package:site_hope/general/widgets/feedback_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppFooter extends StatelessWidget {
   final CurrentResolution resolution;
@@ -28,6 +30,22 @@ class AppFooter extends StatelessWidget {
           child: resolution == CurrentResolution.isWeb
               ? _buildWeb()
               : _buildMobile(),
+        ),
+        Center(
+          child: Padding(
+            padding: EdgeInsets.all(
+              resolution == CurrentResolution.isWeb ? 40 : 30,
+            ),
+            child: Text(
+              'Todos os direitos reservados para o site HOPE Viagens © 2024${resolution == CurrentResolution.isWeb ? '  |  ' : '\n'}Site desenvolvido por: Turbo Design.',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: AppColors.hopeGrey,
+                fontSize: 14,
+                fontWeight: FontWeightHelper.bold,
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -74,11 +92,11 @@ class AppFooter extends StatelessWidget {
   }
 
   Widget socialMediaInfo() {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Siga nossas redes sociais\ne fique por dentro.',
           style: TextStyle(
             fontSize: 14,
@@ -88,24 +106,44 @@ class AppFooter extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(
+        const SizedBox(
           height: 14,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              FontAwesomeIcons.instagram,
-              color: AppColors.hopeOrange,
-              size: 25,
+            IconButton(
+              onPressed: () async {
+                await launchUrl(
+                  Uri.parse(
+                    UrlConstants.whatsApp,
+                  ),
+                  mode: LaunchMode.externalApplication,
+                );
+              },
+              icon: const Icon(
+                FontAwesomeIcons.instagram,
+                color: AppColors.hopeOrange,
+                size: 25,
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            Icon(
-              Icons.facebook,
-              color: AppColors.hopeOrange,
-              size: 25,
+            IconButton(
+              onPressed: () async {
+                await launchUrl(
+                  Uri.parse(
+                    UrlConstants.facebook,
+                  ),
+                  mode: LaunchMode.externalApplication,
+                );
+              },
+              icon: const Icon(
+                Icons.facebook,
+                color: AppColors.hopeOrange,
+                size: 25,
+              ),
             ),
           ],
         )
