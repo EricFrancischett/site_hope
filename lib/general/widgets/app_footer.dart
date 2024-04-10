@@ -121,10 +121,13 @@ class AppFooter extends StatelessWidget {
                   mode: LaunchMode.externalApplication,
                 );
               },
-              icon: const Icon(
-                FontAwesomeIcons.instagram,
-                color: AppColors.hopeOrange,
-                size: 25,
+              icon: Transform.translate(
+                offset: const Offset(0, -3),
+                child: const Icon(
+                  FontAwesomeIcons.instagram,
+                  color: AppColors.hopeOrange,
+                  size: 35,
+                ),
               ),
             ),
             const SizedBox(
@@ -142,7 +145,7 @@ class AppFooter extends StatelessWidget {
               icon: const Icon(
                 Icons.facebook,
                 color: AppColors.hopeOrange,
-                size: 25,
+                size: 35,
               ),
             ),
           ],

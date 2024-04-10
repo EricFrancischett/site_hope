@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/resolutions.dart';
-import 'package:site_hope/general/widgets/app_bar_widget.dart';
+import 'package:site_hope/general/custom_app_bar/app_bar_widget.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
 
 class BlogPage extends StatelessWidget {
@@ -25,6 +26,7 @@ class BlogPage extends StatelessWidget {
               ),
               child: AppBarWidget(
                 resolution: resolution,
+                currentPage: PagesEnum.blog,
               ),
             ),
             const SizedBox(

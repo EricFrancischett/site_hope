@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/custom_scroll_keys.dart';
 import 'package:site_hope/general/db_home_entity.dart';
 import 'package:site_hope/general/resolutions.dart';
-import 'package:site_hope/general/widgets/app_bar_widget.dart';
+import 'package:site_hope/general/custom_app_bar/app_bar_widget.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
 import 'package:site_hope/general/widgets/destination_widget.dart';
 import 'package:site_hope/general/widgets/faq_widget.dart';
@@ -56,7 +57,6 @@ class _HomePageState extends State<HomePage> {
     return isLoading
         ? const Center(
             child: CircularProgressIndicator(
-              strokeWidth: 10,
               color: AppColors.hopeOrange,
             ),
           )
@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: AppBarWidget(
                           resolution: resolution,
+                          currentPage: PagesEnum.home,
                         ),
                       ),
                       Center(

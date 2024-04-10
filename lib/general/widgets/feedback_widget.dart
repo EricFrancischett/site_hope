@@ -89,7 +89,6 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
     return isLoading
         ? const Center(
             child: CircularProgressIndicator(
-              strokeWidth: 10,
               color: AppColors.hopeOrange,
             ),
           )
@@ -133,7 +132,11 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                     surfaceTintColor: AppColors.hopeWhite,
                                     backgroundColor: AppColors.hopeWhite,
                                     child: Container(
-                                      width: 350,
+                                      width: (widget.resolution ==
+                                                  CurrentResolution.isCellPhone
+                                              ? 200
+                                              : 282) +
+                                          60,
                                       padding: const EdgeInsets.all(30),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,

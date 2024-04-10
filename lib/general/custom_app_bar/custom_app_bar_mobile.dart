@@ -137,6 +137,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
                     duration: const Duration(
                       milliseconds: 500,
                     ),
+                    alignment: -2.5,
                     alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
                   );
                 });
@@ -146,6 +147,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
                   duration: const Duration(
                     milliseconds: 500,
                   ),
+                  alignment: -2.5,
                   alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
                 );
               }
@@ -171,6 +173,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
                     duration: const Duration(
                       milliseconds: 500,
                     ),
+                  alignment: 1.75,
                     alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
                   );
                 });
@@ -180,6 +183,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
                   duration: const Duration(
                     milliseconds: 500,
                   ),
+                  alignment: 1.75,
                   alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
                 );
               }

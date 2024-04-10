@@ -44,53 +44,81 @@ class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
     return _controller.value.isInitialized
         ? ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: MouseRegion(
-              onEnter: (event) {
-                setState(() {
-                  isHovering = true;
-                });
-              },
-              onExit: (event) {
-                setState(() {
-                  isHovering = false;
-                });
-              },
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  SizedBox(
-                    width: widget.resolution == CurrentResolution.isCellPhone
-                        ? 200
-                        : 282,
-                    height: widget.resolution == CurrentResolution.isCellPhone
-                        ? 356
-                        : 502,
-                    child: VideoPlayer(
-                      _controller,
+            child: widget.resolution == CurrentResolution.isWeb
+                ? MouseRegion(
+                    onEnter: (event) {
+                      setState(() {
+                        isHovering = true;
+                      });
+                    },
+                    onExit: (event) {
+                      setState(() {
+                        isHovering = false;
+                      });
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                          width: 282,
+                          height: 502,
+                          child: VideoPlayer(
+                            _controller,
+                          ),
+                        ),
+                        Visibility(
+                          visible: !_controller.value.isPlaying || isHovering,
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _controller.value.isPlaying
+                                    ? _controller.pause()
+                                    : _controller.play();
+                              });
+                            },
+                            icon: Icon(
+                              _controller.value.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              size: 50,
+                              color: AppColors.hopeWhite,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Visibility(
-                    visible: !_controller.value.isPlaying || isHovering,
-                    child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _controller.value.isPlaying
-                              ? _controller.pause()
-                              : _controller.play();
-                        });
-                      },
-                      icon: Icon(
-                        _controller.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
-                        size: 50,
-                        color: AppColors.hopeWhite,
+                  )
+                : Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      SizedBox(
+                        height: 450,
+                        child: AspectRatio(
+                          aspectRatio: _controller.value.aspectRatio,
+                          child: VideoPlayer(_controller),
+                        ),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _controller.value.isPlaying
+                                  ? _controller.pause()
+                                  : _controller.play();
+                            });
+                          },
+                          icon: Icon(
+                            _controller.value.isPlaying
+                                ? Icons.pause
+                                : Icons.play_arrow,
+                            size: 25,
+                            color: AppColors.hopeWhite,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
           )
         : const SizedBox(
             width: 282,

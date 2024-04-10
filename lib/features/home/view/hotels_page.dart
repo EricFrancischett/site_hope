@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
+import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
 import 'package:site_hope/general/db_carrent_entity.dart';
 import 'package:site_hope/general/resolutions.dart';
-import 'package:site_hope/general/widgets/app_bar_widget.dart';
+import 'package:site_hope/general/custom_app_bar/app_bar_widget.dart';
 import 'package:site_hope/general/widgets/app_footer.dart';
 import 'package:site_hope/general/widgets/hotels_grid_widget.dart';
 import 'package:site_hope/general/widgets/intro_carrent_widget.dart';
@@ -51,7 +52,6 @@ class _HotelsPageState extends State<HotelsPage> {
     return isLoading
         ? const Center(
             child: CircularProgressIndicator(
-              strokeWidth: 10,
               color: AppColors.hopeOrange,
             ),
           )
@@ -76,6 +76,7 @@ class _HotelsPageState extends State<HotelsPage> {
                         ),
                         child: AppBarWidget(
                           resolution: resolution,
+                          currentPage: PagesEnum.hotels,
                         ),
                       ),
                       Center(

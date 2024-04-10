@@ -98,9 +98,11 @@ class OurHistoryWidget extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        OurStoryVideoWidget(
-          videoUrl: videoUrl,
-          resolution: resolution,
+        Center(
+          child: OurStoryVideoWidget(
+            videoUrl: videoUrl,
+            resolution: resolution,
+          ),
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
@@ -15,19 +16,21 @@ class InformativeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return resolution == CurrentResolution.isWeb ? _buildWeb() : _buildMobile();
+    return resolution == CurrentResolution.isWeb
+        ? _buildWeb(context)
+        : _buildMobile(context);
   }
 
-  Widget _buildMobile() {
+  Widget _buildMobile(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Column(
+        Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 text: 'Atendimento\n',
                 children: [
@@ -50,10 +53,10 @@ class InformativeWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 23,
             ),
-            Text(
+            const Text(
               'Com foco em segurança,\nnosso serviço é referência\nem viagens de famílias.',
               style: TextStyle(
                 fontSize: 18,
@@ -62,7 +65,7 @@ class InformativeWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -70,12 +73,15 @@ class InformativeWidget extends StatelessWidget {
               child: AppCustomButton(
                 title: 'Clique aqui e saiba mais!',
                 fontWeight: FontWeightHelper.bold,
+                onTap: () {
+                  context.go('/sobre');
+                },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Viaje sem burocracia.',
               style: TextStyle(
                 color: AppColors.hopeOrange,
@@ -87,90 +93,96 @@ class InformativeWidget extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 80,
-        ),
-        TipsWidget(
-          imageUrl: imageUrl,
-        ),
+        // const SizedBox(
+        //   height: 80,
+        // ),
+        // TipsWidget(
+        //   imageUrl: imageUrl,
+        // ),
       ],
     );
   }
 
-  Widget _buildWeb() {
+  Widget _buildWeb(BuildContext context) {
     return SizedBox(
       height: 375,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text.rich(
-                TextSpan(
-                  text: 'Atendimento\n',
-                  children: [
-                    TextSpan(
-                      text: '100% online',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 70),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text.rich(
+                  TextSpan(
+                    text: 'Atendimento\n',
+                    children: [
+                      TextSpan(
+                        text: '100% online',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: ' e\npersonalizado!',
-                    ),
-                  ],
+                      TextSpan(
+                        text: ' e\npersonalizado!',
+                      ),
+                    ],
+                  ),
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeightHelper.semiBold,
+                    color: AppColors.hopeOrange,
+                    height: 1,
+                  ),
                 ),
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeightHelper.semiBold,
-                  color: AppColors.hopeOrange,
-                  height: 1,
+                const SizedBox(
+                  height: 23,
                 ),
-              ),
-              SizedBox(
-                height: 23,
-              ),
-              Text(
-                'Com foco em segurança, nosso serviço\né referência em viagens de famílias.',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeightHelper.medium,
-                  color: AppColors.hopeBlack,
+                const Text(
+                  'Com foco em segurança, nosso serviço\né referência em viagens de famílias.',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeightHelper.medium,
+                    color: AppColors.hopeBlack,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: 375,
-                child: AppCustomButton(
-                  title: 'Clique aqui e saiba mais sobre a nossa história!',
-                  fontWeight: FontWeightHelper.bold,
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Viaje sem burocracia.',
-                style: TextStyle(
-                  color: AppColors.hopeOrange,
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeightHelper.bold,
+                SizedBox(
+                  width: 375,
+                  child: AppCustomButton(
+                    title: 'Clique aqui e saiba mais sobre a nossa história!',
+                    fontWeight: FontWeightHelper.bold,
+                    onTap: () {
+                      context.go('/sobre');
+                    },
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Viaje sem burocracia.',
+                  style: TextStyle(
+                    color: AppColors.hopeOrange,
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeightHelper.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(
-            width: 78,
-          ),
-          TipsWidget(
-            imageUrl: imageUrl,
-          ),
+          // const SizedBox(
+          //   width: 78,
+          // ),
+          // TipsWidget(
+          //   imageUrl: imageUrl,
+          // ),
         ],
       ),
     );
