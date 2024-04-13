@@ -5,10 +5,12 @@ import 'package:video_player/video_player.dart';
 
 class OurStoryVideoWidget extends StatefulWidget {
   final String videoUrl;
+  final String thumbOurStory;
   final CurrentResolution resolution;
   const OurStoryVideoWidget({
     super.key,
     required this.videoUrl,
+    required this.thumbOurStory,
     required this.resolution,
   });
 
@@ -18,6 +20,7 @@ class OurStoryVideoWidget extends StatefulWidget {
 
 class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
   bool isHovering = false;
+  bool isVideoInitialized = false;
   late VideoPlayerController _controller;
 
   @override
@@ -60,17 +63,17 @@ class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
                       alignment: Alignment.center,
                       children: [
                         SizedBox(
-                          width: 282,
-                          height: 502,
-                          child: VideoPlayer(
-                            _controller,
-                          ),
-                        ),
+                            width: 282,
+                            height: 502,
+                            child: VideoPlayer(
+                              _controller,
+                            )),
                         Visibility(
                           visible: !_controller.value.isPlaying || isHovering,
                           child: IconButton(
                             onPressed: () {
                               setState(() {
+                                isVideoInitialized = true;
                                 _controller.value.isPlaying
                                     ? _controller.pause()
                                     : _controller.play();
@@ -95,7 +98,19 @@ class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
                         height: 450,
                         child: AspectRatio(
                           aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(_controller),
+                          child: isVideoInitialized
+                              ? VideoPlayer(
+                                  _controller,
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      image: NetworkImage(widget.thumbOurStory),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                       Padding(
@@ -103,6 +118,7 @@ class _OurStoryVideoWidgetState extends State<OurStoryVideoWidget> {
                         child: IconButton(
                           onPressed: () {
                             setState(() {
+                              isVideoInitialized = true;
                               _controller.value.isPlaying
                                   ? _controller.pause()
                                   : _controller.play();

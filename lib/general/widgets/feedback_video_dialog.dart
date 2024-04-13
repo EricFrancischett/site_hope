@@ -5,10 +5,12 @@ import 'package:video_player/video_player.dart';
 
 class FeedbackVideoDialog extends StatefulWidget {
   final String videoUrl;
+  final String thumbUrl;
   final CurrentResolution resolution;
   const FeedbackVideoDialog({
     super.key,
     required this.videoUrl,
+    required this.thumbUrl,
     required this.resolution,
   });
 
@@ -18,6 +20,7 @@ class FeedbackVideoDialog extends StatefulWidget {
 
 class _FeedbackVideoDialogState extends State<FeedbackVideoDialog> {
   bool isHovering = false;
+  bool isVideoInitialized = false;
   late VideoPlayerController _controller;
 
   @override
@@ -76,6 +79,7 @@ class _FeedbackVideoDialogState extends State<FeedbackVideoDialog> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
+                                isVideoInitialized = true;
                                 _controller.value.isPlaying
                                     ? _controller.pause()
                                     : _controller.play();
@@ -100,7 +104,19 @@ class _FeedbackVideoDialogState extends State<FeedbackVideoDialog> {
                         height: 375,
                         child: AspectRatio(
                           aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(_controller),
+                          child: isVideoInitialized
+                              ? VideoPlayer(
+                                  _controller,
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                      image: NetworkImage(widget.thumbUrl),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                       Padding(
@@ -108,6 +124,7 @@ class _FeedbackVideoDialogState extends State<FeedbackVideoDialog> {
                         child: IconButton(
                           onPressed: () {
                             setState(() {
+                              isVideoInitialized = true;
                               _controller.value.isPlaying
                                   ? _controller.pause()
                                   : _controller.play();

@@ -116,7 +116,7 @@ class AppFooter extends StatelessWidget {
               onPressed: () async {
                 await launchUrl(
                   Uri.parse(
-                    UrlConstants.whatsApp,
+                    UrlConstants.instagram,
                   ),
                   mode: LaunchMode.externalApplication,
                 );

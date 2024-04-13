@@ -119,6 +119,7 @@ class _AboutPageState extends State<AboutPage> {
                                   child: OurHistoryWidget(
                                     resolution: resolution,
                                     videoUrl: entity.ourStoryVideoUrl,
+                                    thumbOurStory: entity.thumbOurStory, 
                                   ),
                                 ),
                                 const SizedBox(

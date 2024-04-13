@@ -7,10 +7,12 @@ import 'package:site_hope/general/widgets/our_story_video_widget.dart';
 class OurHistoryWidget extends StatelessWidget {
   final CurrentResolution resolution;
   final String videoUrl;
+  final String thumbOurStory;
   const OurHistoryWidget({
     super.key,
     required this.resolution,
     required this.videoUrl,
+    required this.thumbOurStory,
   });
 
   @override
@@ -28,6 +30,7 @@ class OurHistoryWidget extends StatelessWidget {
       children: [
         OurStoryVideoWidget(
           videoUrl: videoUrl,
+          thumbOurStory: thumbOurStory,
           resolution: resolution,
         ),
         const SizedBox(
@@ -102,6 +105,7 @@ class OurHistoryWidget extends StatelessWidget {
           child: OurStoryVideoWidget(
             videoUrl: videoUrl,
             resolution: resolution,
+            thumbOurStory: thumbOurStory,
           ),
         ),
       ],

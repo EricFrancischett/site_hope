@@ -194,6 +194,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                           FeedbackVideoDialog(
                                             videoUrl: feedBacks[index].videoUrl,
                                             resolution: widget.resolution,
+                                            thumbUrl: feedBacks[index].thumbUrl,
                                           ),
                                         ],
                                       ),

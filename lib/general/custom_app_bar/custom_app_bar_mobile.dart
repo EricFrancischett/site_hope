@@ -70,16 +70,9 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
               }
             },
             child: SvgPicture.asset(
-              ImageConstants.hopeSimbolo,
-              colorFilter: !isExpanded
-                  ? const ColorFilter.mode(
-                      AppColors.hopeWhite,
-                      BlendMode.srcIn,
-                    )
-                  : const ColorFilter.mode(
-                      AppColors.hopeOrange,
-                      BlendMode.srcIn,
-                    ),
+              !isExpanded
+                  ? ImageConstants.hopeSimbolo
+                  : ImageConstants.hopeSimboloLaranja,
             ),
           ),
         ),
@@ -173,7 +166,7 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
                     duration: const Duration(
                       milliseconds: 500,
                     ),
-                  alignment: 1.75,
+                    alignment: 1.75,
                     alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
                   );
                 });

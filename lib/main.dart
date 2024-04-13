@@ -1,19 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:site_hope/app_widget.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:site_hope/general/app_colors.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: AppColors.hopeOrange,
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: AppColors.hopeOrange,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ),
-  );
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
