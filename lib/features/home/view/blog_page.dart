@@ -14,47 +14,42 @@ class BlogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resolution = Resolutions.getResolution(context: context);
-    return SafeAreaq(
-      child: AnnotatedRegion(
-        value: CustomOverlay.hopeOverlay,
-        child: Scaffold(
-          backgroundColor: AppColors.hopeWhite,
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(
-                    resolution == CurrentResolution.isWeb ? 40 : 30,
-                  ),
-                  child: AppBarWidget(
-                    resolution: resolution,
-                    currentPage: PagesEnum.blog,
-                  ),
-                ),
-                const SizedBox(
-                  height: 80,
-                ),
-                const Center(
-                  child: Text(
-                    'Ainda não postamos nada por aqui!',
-                    style: TextStyle(
-                      color: AppColors.hopeBlack,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 80,
-                ),
-                AppFooter(
-                  resolution: resolution,
-                ),
-              ],
+    return Scaffold(
+      backgroundColor: AppColors.hopeWhite,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(
+                resolution == CurrentResolution.isWeb ? 40 : 30,
+              ),
+              child: AppBarWidget(
+                resolution: resolution,
+                currentPage: PagesEnum.blog,
+              ),
             ),
-          ),
+            const SizedBox(
+              height: 80,
+            ),
+            const Center(
+              child: Text(
+                'Ainda não postamos nada por aqui!',
+                style: TextStyle(
+                  color: AppColors.hopeBlack,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            AppFooter(
+              resolution: resolution,
+            ),
+          ],
         ),
       ),
     );
