@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
+import 'package:site_hope/general/custom_overlay.dart';
 import 'package:site_hope/general/db_carrent_entity.dart';
 import 'package:site_hope/general/font_weight_helper.dart';
 import 'package:site_hope/general/resolutions.dart';
@@ -64,109 +65,114 @@ class _CarRentPageState extends State<CarRentPage> {
                   size: 40,
                 ),
               )
-            : Scaffold(
-                backgroundColor: AppColors.hopeWhite,
-                body: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(
-                          resolution == CurrentResolution.isWeb ? 40 : 30,
-                        ),
-                        child: AppBarWidget(
-                          resolution: resolution,
-                          currentPage: PagesEnum.carRent,
-                        ),
-                      ),
-                      Center(
-                        child: SizedBox(
-                          width: 1024,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: resolution == CurrentResolution.isWeb
-                                  ? 40
-                                  : 30,
+            : SafeArea(
+              child: AnnotatedRegion(
+                value: CustomOverlay.hopeOverlay,
+                child: Scaffold(
+                    backgroundColor: AppColors.hopeWhite,
+                    body: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(
+                              resolution == CurrentResolution.isWeb ? 40 : 30,
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                IntroCarRentWidget(
-                                  imageUrl: entity.carRentPicUrl,
-                                ),
-                                const SizedBox(
-                                  height: 80,
-                                ),
-                                CarPartnersWidget(
-                                  partnersLogoUrl: entity.logosUrl,
-                                ),
-                                const SizedBox(
-                                  height: 80,
-                                ),
-                                Center(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      _buildInformativeWidget(
-                                        title: 'Reservas online',
-                                        itens: [
-                                          'Escolha o destino e as datas desejadas.',
-                                          'Selecione o tipo de carro e características desejadas.',
-                                          'Realize a reserva com a gente.',
-                                        ],
-                                      ),
-                                      _buildInformativeWidget(
-                                        title: 'Documentação necessária',
-                                        itens: [
-                                          'Certifique-se de ter os documentos necessários:\ncarteira de motorista, identidade ou passaporte,\ne cartão de crédito.',
-                                        ],
-                                      ),
-                                      _buildInformativeWidget(
-                                        title: 'Retirada do Veículo',
-                                        itens: [
-                                          'Dirija-se à locadora no dia e horário agendados.',
-                                          'Apresente os documentos e o voucher de reserva.',
-                                          'Realize a vistoria do veículo antes de retirá-lo.',
-                                        ],
-                                      ),
-                                      _buildInformativeWidget(
-                                        title: 'Pagamento e Caução',
-                                        itens: [
-                                          'Efetue o pagamento do aluguel e eventuais taxas adicionais.',
-                                          'Deixe um caução no cartão de crédito para cobrir possíveis danos.',
-                                        ],
-                                      ),
-                                      _buildInformativeWidget(
-                                        isLast: true,
-                                        title: 'Devolução do Veículo',
-                                        itens: [
-                                          'Devolva o carro na data e local combinados.',
-                                          'Realize uma nova vistoria para garantir que o veículo está em condições adequadas.',
-                                          'Finalize o processo e aproveite sua viagem!',
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+                            child: AppBarWidget(
+                              resolution: resolution,
+                              currentPage: PagesEnum.carRent,
                             ),
                           ),
-                        ),
+                          Center(
+                            child: SizedBox(
+                              width: 1024,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: resolution == CurrentResolution.isWeb
+                                      ? 40
+                                      : 30,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    IntroCarRentWidget(
+                                      imageUrl: entity.carRentPicUrl,
+                                    ),
+                                    const SizedBox(
+                                      height: 80,
+                                    ),
+                                    CarPartnersWidget(
+                                      partnersLogoUrl: entity.logosUrl,
+                                    ),
+                                    const SizedBox(
+                                      height: 80,
+                                    ),
+                                    Center(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          _buildInformativeWidget(
+                                            title: 'Reservas online',
+                                            itens: [
+                                              'Escolha o destino e as datas desejadas.',
+                                              'Selecione o tipo de carro e características desejadas.',
+                                              'Realize a reserva com a gente.',
+                                            ],
+                                          ),
+                                          _buildInformativeWidget(
+                                            title: 'Documentação necessária',
+                                            itens: [
+                                              'Certifique-se de ter os documentos necessários:\ncarteira de motorista, identidade ou passaporte,\ne cartão de crédito.',
+                                            ],
+                                          ),
+                                          _buildInformativeWidget(
+                                            title: 'Retirada do Veículo',
+                                            itens: [
+                                              'Dirija-se à locadora no dia e horário agendados.',
+                                              'Apresente os documentos e o voucher de reserva.',
+                                              'Realize a vistoria do veículo antes de retirá-lo.',
+                                            ],
+                                          ),
+                                          _buildInformativeWidget(
+                                            title: 'Pagamento e Caução',
+                                            itens: [
+                                              'Efetue o pagamento do aluguel e eventuais taxas adicionais.',
+                                              'Deixe um caução no cartão de crédito para cobrir possíveis danos.',
+                                            ],
+                                          ),
+                                          _buildInformativeWidget(
+                                            isLast: true,
+                                            title: 'Devolução do Veículo',
+                                            itens: [
+                                              'Devolva o carro na data e local combinados.',
+                                              'Realize uma nova vistoria para garantir que o veículo está em condições adequadas.',
+                                              'Finalize o processo e aproveite sua viagem!',
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 80,
+                          ),
+                          AppFooter(
+                            resolution: resolution,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 80,
-                      ),
-                      AppFooter(
-                        resolution: resolution,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              );
+              ),
+            );
   }
 
   Widget _buildInformativeWidget({

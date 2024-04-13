@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:site_hope/general/app_colors.dart';
 import 'package:site_hope/general/custom_app_bar/pages_enum.dart';
+import 'package:site_hope/general/custom_overlay.dart';
 import 'package:site_hope/general/db_carrent_entity.dart';
 import 'package:site_hope/general/resolutions.dart';
 import 'package:site_hope/general/custom_app_bar/app_bar_widget.dart';
@@ -63,56 +64,61 @@ class _HotelsPageState extends State<HotelsPage> {
                   size: 40,
                 ),
               )
-            : Scaffold(
-                backgroundColor: AppColors.hopeWhite,
-                body: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(
-                          resolution == CurrentResolution.isWeb ? 40 : 30,
-                        ),
-                        child: AppBarWidget(
-                          resolution: resolution,
-                          currentPage: PagesEnum.hotels,
-                        ),
-                      ),
-                      Center(
-                        child: SizedBox(
-                          width: 1024,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: resolution == CurrentResolution.isWeb
-                                  ? 40
-                                  : 30,
+            : SafeArea(
+              child: AnnotatedRegion(
+                value: CustomOverlay.hopeOverlay,
+                child: Scaffold(
+                    backgroundColor: AppColors.hopeWhite,
+                    body: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(
+                              resolution == CurrentResolution.isWeb ? 40 : 30,
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                IntroCarRentWidget(
-                                  imageUrl: entity.carRentPicUrl,
-                                ),
-                                const SizedBox(
-                                  height: 80,
-                                ),
-                              ],
+                            child: AppBarWidget(
+                              resolution: resolution,
+                              currentPage: PagesEnum.hotels,
                             ),
                           ),
-                        ),
+                          Center(
+                            child: SizedBox(
+                              width: 1024,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: resolution == CurrentResolution.isWeb
+                                      ? 40
+                                      : 30,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    IntroCarRentWidget(
+                                      imageUrl: entity.carRentPicUrl,
+                                    ),
+                                    const SizedBox(
+                                      height: 80,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 80,
+                          ),
+                          const HotelsGridWidget(),
+                          AppFooter(
+                            resolution: resolution,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 80,
-                      ),
-                      const HotelsGridWidget(),
-                      AppFooter(
-                        resolution: resolution,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              );
+              ),
+            );
   }
 }
