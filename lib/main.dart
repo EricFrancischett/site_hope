@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:meta_seo/meta_seo.dart';
 import 'package:site_hope/app_widget.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -17,5 +18,6 @@ void main() async {
     ),
   );
   usePathUrlStrategy();
+  MetaSEO().config();
   runApp(const AppWidget());
 }
